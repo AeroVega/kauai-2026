@@ -1,1 +1,34 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f766e"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Kauaʻi"><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css"><title>Kauaʻi • Family Companion</title></head><body><header class="topbar"><div><p class="eyebrow">HAWAII • OCTOBER 2026</p><h1>Kauaʻi <span>🌺</span></h1></div><button class="icon-button" id="installButton" hidden>＋</button></header><main><section class="hero"><p class="eyebrow">ALPHA PROTOTYPE</p><h2>Different paths.<br><em>Same place.</em></h2><p class="hero-copy">A calmer way to experience the family itinerary — built for the moments when nobody wants to open a spreadsheet.</p></section><section class="today-card"><div class="section-kicker">TODAY</div><div class="today-head"><div><span class="day-number">01</span><h3>Arrival &amp; settle in</h3></div><span class="pill">LOW KEY</span></div><p>Arrive, get oriented, stock the condo, and let the island start slowly.</p><button class="primary" data-action="today">View today's plan <span>→</span></button></section><section class="next-card"><div><div class="section-kicker">NEXT</div><h3>Arrive at Waipouli</h3><p>Check in • unpack • breathe</p></div><div class="next-icon">🏝️</div></section><section class="quick-grid"><button data-action="trip"><span>📅</span><strong>Trip</strong><small>8 days</small></button><button data-action="map"><span>🗺️</span><strong>Map</strong><small>Places &amp; routes</small></button><button data-action="family"><span>👨‍👩‍👧</span><strong>Family</strong><small>Three travelers</small></button><button data-action="more"><span>☰</span><strong>More</strong><small>Logistics &amp; notes</small></button></section><section class="anchor-note"><span>✦</span><div><strong>Trip philosophy</strong><p>Build enough structure to make the good things happen. Leave enough room for Kauaʻi to surprise us.</p></div></section></main><nav class="bottom-nav"><button class="active" data-action="today"><span>◉</span>Today</button><button data-action="trip"><span>▤</span>Trip</button><button data-action="map"><span>⌖</span>Map</button><button data-action="family"><span>♡</span>Family</button></nav><dialog id="sheet"><div class="sheet-inner"><button class="close" id="closeSheet">×</button><div id="sheetContent"></div></div></dialog><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f4ef">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Kauaʻi">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+<title>Kauai 2026 Dashboard</title>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <a class="brand" href="./" aria-label="Kauai 2026 Dashboard">
+    <span class="brand-mark">🌺</span><span>Kauai 2026 Dashboard</span>
+  </a>
+  <button class="install-button" id="installButton" hidden aria-label="Add dashboard to Home Screen">Install</button>
+</header>
+<div class="layout">
+  <nav class="nav" aria-label="Primary navigation">
+    <button class="nav-item active" data-view="today"><span class="nav-icon">⌂</span><span>Today</span></button>
+    <button class="nav-item" data-view="plan"><span class="nav-icon">☷</span><span>Plan</span></button>
+    <button class="nav-item" data-view="map"><span class="nav-icon">⌖</span><span>Map</span></button>
+    <button class="nav-item" data-view="more"><span class="nav-icon">•••</span><span>More</span></button>
+  </nav>
+  <main id="app" aria-live="polite"></main>
+</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
