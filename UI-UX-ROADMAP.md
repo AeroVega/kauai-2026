@@ -27,7 +27,7 @@ The design should feel calm, deliberate, and Apple-inspired: strong hierarchy, r
 - [x] Flexible / conditional / decision-status information
 - [x] External links to specialized services rather than recreating them
 - [x] External navigation handoffs
-- [x] Persistent light/dark appearance preference
+- [] Persistent light/dark appearance preference (QA disagrees)
 - [x] Larger general typography for readability
 - [x] PWA manifest and service-worker shell
 - [x] GitHub Pages deployment
