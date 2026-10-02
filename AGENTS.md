@@ -67,7 +67,8 @@ The dashboard is a planning companion, not the authority that decides the vacati
 - `js/views/more.js` — secondary tools and appearance.
 - `styles.css` — visual system and responsive layout.
 - `itinerary.json` — application data.
-- `manifest.json` — PWA metadata.
+- `manifest.json` — PWA metadata and app icon declaration.
+- `kauai-icon-1024.png` — finalized iOS/PWA Home Screen icon.
 - `service-worker.js` — update/offline behavior.
 - `UI-UX-ROADMAP.md` — UI/product backlog and decisions.
 - `README.md` — project documentation.
@@ -83,6 +84,8 @@ Every completed coding update must deploy with a new cache/build identifier. The
 The service worker now treats HTML and application JavaScript as **network-first with cached fallback**. This is deliberate: the installed PWA must be able to recover from stale application code instead of getting trapped serving an old broken bundle. Static assets remain cache-first. The application also asks the service worker to update when it boots.
 
 The More tab contains a small build identifier because many UI changes will not be visually obvious enough to prove a device received a new deployment.
+
+The finalized Home Screen icon is the raster `kauai-icon-1024.png`. iOS uses it through the `apple-touch-icon` link in `index.html`; the same PNG is declared by the PWA manifest and precached by the service worker. Keep these references aligned if the icon changes.
 
 After changes, verify the repository, cache version, deployment workflow, and—when practical—the installed/PWA experience.
 
