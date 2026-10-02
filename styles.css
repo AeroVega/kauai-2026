@@ -85,3 +85,42 @@ html.narrow-touch-portrait .nav-mobile{position:relative;top:auto;right:auto;bot
 
 /* Let the Today card size to its content instead of stretching beside open items. */
 .dashboard-grid{align-items:start}
+
+/* Readable metadata, comfortable controls, and wrapping without smaller body text. */
+:root{--muted:#566965;--type-title:2.125rem;--type-section:1.5rem;--type-body:1rem;--type-meta:.875rem}
+button{font-family:inherit;cursor:pointer}
+.hero h1,.hero.compact h1,html.narrow-touch-portrait .hero h1{font-size:var(--type-title);line-height:1.1}
+.section-title,.path-intro h2{font-size:var(--type-section)}
+.day-title,.activity-item h3{font-size:1.125rem}
+.subtle,.activity-item p,.detail-lede,.path-item p,.family-item p{font-size:var(--type-body)}
+.day-sub,.link-row span,.small,.activity-meta time{font-size:var(--type-meta)}
+.eyebrow,.flow-label{font-size:.75rem;letter-spacing:.08em}
+.hero .eyebrow{font-size:var(--type-meta);letter-spacing:.04em;margin-bottom:8px}
+.day-chip,.status-chip,.row-tag,.link-row .status-chip{font-size:.75rem;letter-spacing:.04em}
+.link-row .status-chip{color:var(--teal)}
+.link-row .status-chip.todo{color:var(--warn-ink)}
+.nav-item{min-height:44px;color:var(--muted)}
+.nav-desktop .nav-item{font-size:var(--type-meta)}
+.out,.back,.text-link{min-height:44px;display:inline-flex;align-items:center}
+.out,.back{padding:8px 4px}
+.text-link{padding:8px 0}
+.theme-toggle{width:52px;min-width:52px;height:44px;border:0;padding:0 4px;background:var(--surface2);border-radius:999px;display:inline-flex;align-items:center}
+.toggle-knob{width:28px;height:28px;border-radius:50%;background:var(--surface);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.theme-toggle[aria-pressed="true"]{background:var(--teal)}
+.theme-toggle[aria-pressed="true"] .toggle-knob{margin-left:16px}
+.reservation-action{margin:6px 0 0;color:var(--muted);font-size:var(--type-meta);line-height:1.45}
+.link-row{flex-wrap:wrap}
+.link-row>div:first-child{flex:1 1 160px;min-width:0}
+.row-actions{margin-left:auto}
+.now-row,.detail-head,.progress-top{flex-wrap:wrap}
+.now-row>div,.detail-head>div{flex:1 1 180px;min-width:0}
+.card,.path-card,.day-row,.activity-item>div{min-width:0}
+.day-title,.day-sub,.link-row strong,.detail h1,.activity-item h3,.activity-item p,.build-number{overflow-wrap:anywhere}
+.activity-item,html.narrow-touch-portrait .activity-item{grid-template-columns:minmax(0,5rem) minmax(0,1fr)}
+.build-number{margin-top:24px;color:var(--muted);font-size:.75rem}
+#app h1:focus{outline:none}
+@media(max-width:360px){.activity-item,html.narrow-touch-portrait .activity-item{grid-template-columns:1fr;gap:8px}}
+@media(min-width:760px){.topbar{gap:12px;flex-wrap:wrap}.brand{margin-right:auto}.nav-desktop{flex-shrink:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.brand{min-height:44px}
+.external-icon{display:inline-block;flex-shrink:0;width:1em;height:1em;margin-left:5px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}

@@ -1,4 +1,4 @@
-import {s,chip} from "./today.js";
+import {externalIcon,s,chip} from "./today.js";
 
 // Fallback only. Once any activity on a day has "anchor": true/false in the
 // JSON, that day uses the flags and this guess is ignored.
@@ -14,9 +14,9 @@ export function openDay(data,id,onBack,backLabel){
 
   const activities=acts.map(x=>{
     const a=important(x);
-    return '<div class="activity-item'+(a?' activity-anchor':'')+'"><div class="activity-meta"><time>'+s(x.time)+'</time>'+(a?'<span class="anchor-label">Anchor</span>':"")+'</div>'
+    return '<div class="activity-item'+(a?' activity-anchor':'')+'"><div class="activity-meta"><time>'+s(x.time)+'</time></div>'
       +'<div><h3>'+s(x.title)+'</h3><p>'+s(x.detail)+'</p>'
-      +(x.url?'<div class="action-row"><a class="action secondary" href="'+s(x.url)+'" target="_blank" rel="noopener">Open link ↗</a></div>':"")
+      +(x.url?'<div class="action-row"><a class="action secondary" href="'+s(x.url)+'" aria-label="'+s('Open '+x.title)+'" target="_blank" rel="noopener">Open link '+externalIcon+'</a></div>':"")
       +'</div></div>';
   }).join("");
 
@@ -26,7 +26,7 @@ export function openDay(data,id,onBack,backLabel){
     +(d.flex?'<div class="reunion"><span>Flex plan</span><strong>If the day shifts</strong><p>'+s(d.flex)+'</p></div>':"");
   let paths="";
   if(family.length>1){
-    paths='<div class="path-card"><div class="path-intro"><p class="eyebrow">Different paths. Same place.</p><h2>Family paths</h2><p>Join the shared plan, take your own path, or reconnect later. Nothing here is a requirement.</p></div>'
+    paths='<div class="path-card"><div class="path-intro"><p class="eyebrow">Different paths. Same place.</p><h2>Family paths</h2></div>'
       +'<div class="path-list">'+family.map(([k,v])=>'<div class="path-item"><strong>'+s(k)+'</strong><p>'+s(v)+'</p></div>').join("")+'</div>'+extras+'</div>';
   }else if(extras){
     paths='<div class="path-card">'+extras+'</div>';
@@ -34,7 +34,7 @@ export function openDay(data,id,onBack,backLabel){
 
   const r=d.reservation;
   const booking=r?'<div class="card detail-section"><h2>Booking</h2><div class="link-row"><div><strong>'+s(r.name)+'</strong><br><span>'+s(r.detail)+'</span></div>'
-    +'<div class="row-actions">'+(r.status?chip(r.status):"")+(r.url?'<a class="out" href="'+s(r.url)+'" target="_blank" rel="noopener">Open ↗</a>':"")+'</div></div></div>':"";
+    +'<div class="row-actions">'+(r.status?chip(r.status):"")+(r.url?'<a class="out" href="'+s(r.url)+'" aria-label="'+s('Open booking site for '+r.name)+'" target="_blank" rel="noopener">Open '+externalIcon+'</a>':"")+'</div></div></div>':"";
 
   const prev=data.days[i-1],next=data.days[i+1];
   const nav=(prev||next)?'<div class="day-nav">'
@@ -50,4 +50,8 @@ export function openDay(data,id,onBack,backLabel){
   document.getElementById("back").onclick=()=>{if(onBack)onBack()};
   app.querySelectorAll("[data-nav-day]").forEach(b=>b.onclick=()=>openDay(data,b.dataset.navDay,onBack,backLabel));
   window.scrollTo(0,0);
+  document.querySelector(".layout")?.scrollTo(0,0);
+  const heading=app.querySelector("h1");
+  heading.tabIndex=-1;
+  heading.focus({preventScroll:true});
 }
