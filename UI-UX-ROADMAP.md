@@ -74,7 +74,7 @@ Potential structure:
 **Avoid:** duplicating the same itinerary information in multiple places.
 
 ### 3. Activity cards
-**Status:** Planned
+**Status:** Sprint B candidate
 
 Consider richer activity details for important anchors:
 
@@ -324,7 +324,21 @@ Before calling the app “Final”:
 
 ---
 
+## Sprint B
+
+**Focus:** polish the in-trip experience without adding planning complexity.
+
+- [x] Move appearance control into More
+- [x] Add a quiet build identifier to More
+- [ ] Refine activity cards around important anchors
+- [ ] Make family branching visually clearer without turning it into project management
+
 ## Change log
+
+### 2026-10-02 · Sprint B started → More + build visibility
+
+- Moved dark-mode control out of the header and into More.
+- Added a small build identifier at the bottom of More.
 
 ### 2026-10-02 · Sprint A → Today + appearance
 
