@@ -373,3 +373,11 @@ Before calling the app “Final”:
 - Added persistent dark mode.
 - Increased general interface typography.
 - Established this roadmap for deferred UX work.
+
+### 2026-10-02 · Stability pass → modular app + resilient PWA updates
+
+- Split the monolithic JavaScript entrypoint into focused ES modules for bootstrap/state, data loading, shared utilities, and views.
+- Added visible startup fallback content so a failed application boot is no longer a blank screen.
+- Made HTML and application JavaScript network-first in the service worker, with cached fallback for offline use.
+- Added service-worker update checks during application bootstrap.
+- Expanded Pages validation to check every JavaScript module plus the service worker and itinerary JSON.

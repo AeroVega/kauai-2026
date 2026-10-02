@@ -1,0 +1,1 @@
+export async function loadItinerary(){const r=await fetch("./itinerary.json",{cache:"no-store"});if(!r.ok)throw new Error("Itinerary data could not be loaded ("+r.status+")");const data=await r.json();if(!data?.trip||!Array.isArray(data.days))throw new Error("Itinerary data is invalid");return data}

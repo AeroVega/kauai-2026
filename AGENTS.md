@@ -16,15 +16,9 @@ The user's recurring design test is: **“Why is that text there?”** If the an
 
 Do not add explanatory/helper copy merely because it is conventional UX practice. Avoid text that repeats what the hierarchy or control already communicates.
 
-Explicit lessons from this session:
-- Do not add supplemental text everywhere.
-- Do not explain a control when the control is self-explanatory.
-- Prefer a clear heading, useful label, and actual information/action.
-- Avoid filler such as “Keep it simple” when the interface should demonstrate simplicity itself.
-
 ### Do not over-design
 
-The UI should feel calm, deliberate, readable, and Apple-inspired without becoming a showcase of components. Before adding UI, ask: What problem does this solve? Is that problem actually occurring? Can less UI solve it? Does it make the hierarchy noisier?
+The UI should feel calm, deliberate, readable, and Apple-inspired without becoming a showcase of components. Before adding UI, ask: What problem does this solve? Is that problem actually occurring? Can less UI solve it?
 
 ### Prominence should reflect importance
 
@@ -63,14 +57,20 @@ The dashboard is a planning companion, not the authority that decides the vacati
 ## 4. Current architecture
 
 - `index.html` — PWA shell and primary navigation.
-- `app.js` — rendering, view logic, theme preference, date-aware Today behavior.
+- `js/app.js` — bootstrap, state, rendering, and event wiring.
+- `js/data.js` — itinerary loading and validation.
+- `js/utils.js` — shared escaping/date/time helpers.
+- `js/views/today.js` — Today dashboard.
+- `js/views/plan.js` — itinerary list.
+- `js/views/day-detail.js` — individual day detail.
+- `js/views/map.js` — location view.
+- `js/views/more.js` — secondary tools and appearance.
 - `styles.css` — visual system and responsive layout.
 - `itinerary.json` — application data.
 - `manifest.json` — PWA metadata.
-- `service-worker.js` — offline/cache behavior.
+- `service-worker.js` — update/offline behavior.
 - `UI-UX-ROADMAP.md` — UI/product backlog and decisions.
 - `README.md` — project documentation.
-- `AGENTS.md` — coding-agent tribal knowledge and operating rules.
 
 Keep the current lightweight direct-rendering architecture. Do not introduce a framework, database, state-management library, or build system unless the current architecture genuinely stops serving the product.
 
@@ -78,15 +78,13 @@ Keep the current lightweight direct-rendering architecture. Do not introduce a f
 
 Production URL: https://aerovega.github.io/kauai-2026/
 
-The service worker is cache-first. **Every time a coding session finishes making updates, the deployed build/cache version must change.** The project now handles this automatically: `app.js` and `service-worker.js` contain the `__BUILD_SHA__` placeholder, and the GitHub Pages workflow replaces it with the exact `GITHUB_SHA` of the commit being deployed. This makes the visible build identifier and service-worker cache version derive from the same immutable commit hash. Do not manually replace the placeholder with a guessed or future commit hash.
+Every completed coding update must deploy with a new cache/build identifier. The project handles this automatically: `js/app.js` and `service-worker.js` contain the `__BUILD_SHA__` placeholder, and the GitHub Pages workflow replaces it with the exact `GITHUB_SHA` of the commit being deployed. The visible build identifier and service-worker cache version therefore derive from the same immutable commit hash. Do not manually replace the placeholder.
 
-This is intentionally preferable to a hand-maintained `v0-X` cache number: every commit deployed to `main` gets a new cache namespace, preventing an installed PWA from remaining stuck on an older cached application.
+The service worker now treats HTML and application JavaScript as **network-first with cached fallback**. This is deliberate: the installed PWA must be able to recover from stale application code instead of getting trapped serving an old broken bundle. Static assets remain cache-first. The application also asks the service worker to update when it boots.
 
-Current source pattern: `kauai-dashboard-__BUILD_SHA__`. At deployment, `__BUILD_SHA__` becomes the full Git commit SHA.
+The More tab contains a small build identifier because many UI changes will not be visually obvious enough to prove a device received a new deployment.
 
-The More tab contains a small build identifier because many future UI changes will not be visually obvious enough to prove a device received a new deployment. Update it for meaningful builds, keep it quiet, and do not put it in primary navigation.
-
-After changes, verify the repository, cache version when needed, deployed GitHub Pages site, and—when practical—the installed/PWA experience.
+After changes, verify the repository, cache version, deployment workflow, and—when practical—the installed/PWA experience.
 
 ## 6. Responsive/UI tribal knowledge
 
@@ -109,8 +107,6 @@ Family-path UI should communicate freedom, not bureaucracy. It should make optio
 ## 8. External services
 
 Prefer handoffs to specialized services rather than recreating them. Geocaching.com handles cache data/routes; Maps handles navigation; official weather/park sources handle conditions; reservation providers remain the reservation system.
-
-Do not build custom geocaching databases, turn-by-turn navigation, booking engines, restaurant databases, messaging systems, or generic recommendation engines without a demonstrated need.
 
 ## 9. Reservation/status semantics
 
@@ -141,8 +137,6 @@ Important lesson: large HTML strings embedded in JavaScript are easy to corrupt 
 ## 11. Do not “improve” without evidence
 
 Do not add onboarding, helper text, tooltips everywhere, automatic theme detection, notifications, elaborate settings, custom maps, unnecessary animations, metrics, personalization systems, or other conventional app features simply because they are conventional.
-
-The family has explicitly preferred a mellow vacation. The app should disappear into the vacation when it is doing its job well.
 
 ## 12. Project context
 

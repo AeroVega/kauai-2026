@@ -12,64 +12,20 @@ This repository is the version-controlled home for both the **trip-planning arti
 
 The web app uses structured itinerary data in `itinerary.json`. It does **not** read the planning spreadsheet directly.
 
-The planning workbook can live alongside the app so Git preserves the evolution of the itinerary without coupling the application to Excel.
-
 ### Current app
 
-- **Kauai 2026 Dashboard** as the primary app identity
-- Mobile-first layout designed for iPhone and iPad
+- **Kauai 2026 Dashboard**
+- Mobile-first iPhone/iPad layout
 - Dashboard / Today view
 - Full trip / day-by-day itinerary view
-- Day detail views with activities, timing, family considerations, flex plans, and reservation information
+- Day detail views with activities, family considerations, flex plans, and reservation information
 - Map/location view with handoffs to external navigation
 - Reservations and useful external links
 - Family-persona context
 - Persistent light/dark appearance preference
-- PWA manifest and service-worker caching for an app-like Home Screen experience
+- PWA manifest and service-worker caching
 - GitHub Pages deployment through GitHub Actions
-- External services remain external where appropriate, such as Geocaching.com and Maps
-
-### Design direction
-
-The UI is intentionally moving toward an Apple-inspired, iOS-like experience:
-
-- Clear hierarchy
-- Larger, readable typography
-- Minimal repeated text and controls
-- Simple navigation
-- Light/dark appearance
-- Calm visual language
-- Avoid building functionality that established services already handle well
-
-The application's north-star idea remains:
-
-> **Different paths. Same place.**
-
-The dashboard should support three people having different experiences while preserving shared anchors and reunion points.
-
-## Planning vs. app data
-
-The project deliberately has two layers:
-
-```text
-Kauaʻi 2026 repository
-│
-├── planning/
-│   └── Beta itinerary workbook
-│
-└── web app
-    ├── itinerary.json
-    ├── index.html
-    ├── styles.css
-    ├── app.js
-    ├── manifest.json
-    └── service-worker.js
-```
-
-The spreadsheet is a **human planning/authoring artifact**.  
-`itinerary.json` is the **application data source**.
-
-They do not need to be synchronized automatically.
+- ES-module JavaScript split by responsibility
 
 ## Using the dashboard on iPhone or iPad
 
@@ -77,55 +33,78 @@ You do **not** need to install anything from the App Store.
 
 ### Add it to the Home Screen
 
-1. Open the dashboard in **Safari**:
-   **https://aerovega.github.io/kauai-2026/**
+1. Open the dashboard in **Safari**: **https://aerovega.github.io/kauai-2026/**
 2. Tap the **Share** button.
 3. Choose **Add to Home Screen**.
 4. Give it the name you want, then tap **Add**.
 
 It will appear on the Home Screen and open in its app-like experience.
 
-> If **Add to Home Screen** is not visible, scroll through the Share Sheet's actions or use **Edit Actions** to add it.
-
 ## Development
 
 This is a static web application: HTML, CSS, JavaScript, JSON, and PWA metadata.
 
-No web framework or backend is required.
+No web framework, backend, or build system is required.
 
-GitHub Pages hosts the deployed application. The workflow in `.github/workflows/pages.yml` publishes the repository contents to Pages.
+For local development, serve the repository through a local HTTP server rather than opening `index.html` directly. This allows `fetch("./itinerary.json")`, ES modules, and the service worker to behave normally.
 
-For local development, serve the repository through a local HTTP server rather than opening `index.html` directly. This allows `fetch("./itinerary.json")` and the service worker to behave normally.
+The GitHub Pages workflow validates every JavaScript module and the itinerary JSON before deployment.
 
-## Current status
+### Build and cache versioning
+
+Every deployment uses the exact Git commit SHA as the build identifier and service-worker cache namespace. Source files keep the `__BUILD_SHA__` placeholder; the Pages workflow stamps it during deployment. Do not manually replace the placeholder.
+
+## Project structure
+
+```text
+Kauaʻi 2026 repository
+│
+├── planning/                 # human planning artifacts
+├── js/
+│   ├── app.js                # bootstrap, state, rendering, wiring
+│   ├── data.js               # itinerary loading/validation
+│   ├── utils.js              # shared escaping/date/time helpers
+│   └── views/
+│       ├── today.js
+│       ├── plan.js
+│       ├── day-detail.js
+│       ├── map.js
+│       └── more.js
+├── itinerary.json            # application data source
+├── index.html                # PWA shell
+├── styles.css                # visual system
+├── manifest.json             # PWA metadata
+└── service-worker.js         # update/offline behavior
+```
+
+## Project principles
+
+> **Different paths. Same place.**
+
+The dashboard should support three people having different experiences while preserving shared anchors and reunion points. Keep the app calm and useful; use specialized external services for navigation, geocaching, reservations, weather, and similar jobs.
+
+## Status
 
 **Beta v0.1 — functional prototype / planning companion**
 
-The core PWA architecture is working and has been tested on an iPad through the GitHub Pages deployment.
-
-The itinerary is still being developed with family feedback. Major itinerary decisions should be reflected in the planning workbook first, then represented in `itinerary.json` when appropriate.
-
-The project is intentionally paused between meaningful itinerary/UX changes rather than being continuously expanded.
-
-## Repository roadmap
-
-- Continue developing the family itinerary outside the app until significant decisions are made.
-- Update `itinerary.json` when the application should reflect those decisions.
-- Use `UI-UX-ROADMAP.md` to preserve future interface ideas without prematurely building them.
-- When the itinerary is finalized, perform a final usability, accessibility, and offline-readiness pass before the trip.
+The itinerary remains under development. Major itinerary decisions belong in the planning artifacts first, then should be reflected in `itinerary.json` when appropriate.
 
 ## Important files
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | Application shell |
+| `index.html` | Application shell and primary navigation |
 | `styles.css` | Visual system and responsive layout |
-| `app.js` | UI rendering and interaction logic |
+| `js/app.js` | Bootstrap, state, rendering, and event wiring |
+| `js/data.js` | Itinerary loading and validation |
+| `js/utils.js` | Shared helpers |
+| `js/views/` | Individual UI views |
 | `itinerary.json` | Structured application itinerary data |
 | `manifest.json` | PWA metadata |
-| `service-worker.js` | Offline/app-shell caching |
+| `service-worker.js` | Offline/cache/update behavior |
 | `.github/workflows/pages.yml` | GitHub Pages deployment |
-| `UI-UX-ROADMAP.md` | Developer-facing UX ideas and progress |
+| `UI-UX-ROADMAP.md` | UI/product backlog and decisions |
+| `AGENTS.md` | Coding-agent operating guidance |
 | `planning/` | Human-facing itinerary/planning artifacts |
 
 ## License

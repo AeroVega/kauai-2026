@@ -1,0 +1,8 @@
+export const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+export function tripDates(){return {start:new Date(2026,9,22),end:new Date(2026,9,31)}}
+export function dateKey(d){return d.toISOString().slice(0,10)}
+export function localDate(){const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+export function dayForToday(today,start,end,data){if(today<start)return null;if(today>end)return data.days.length;const key=dateKey(today);return data.days.findIndex(d=>dateKey(new Date(d.dateLabel+" 2026"))===key)+1}
+export function progressForToday(today,start,end){const total=end-start;const elapsed=Math.max(0,Math.min(total,today-start));return Math.round((elapsed/total)*100)}
+export function timeMinutes(label){const s=String(label||"").toLowerCase(),m=s.match(/(\d{1,2})(?::(\d{2}))?\s*(am|pm)/);if(m){let h=Number(m[1])%12;if(m[3]==="pm")h+=12;return h*60+Number(m[2]||0)}if(/late afternoon/.test(s))return 960;if(/morning/.test(s))return 540;if(/midday|noon/.test(s))return 720;if(/afternoon/.test(s))return 840;if(/evening/.test(s))return 1080;return null}
+export function dayFlow(day,now){const minutes=now.getHours()*60+now.getMinutes();let current=-1;day.activities.forEach((x,i)=>{const t=timeMinutes(x.time);if(t!==null&&t<=minutes)current=i});if(current<0){const first=day.activities.findIndex(x=>timeMinutes(x.time)!==null);current=first>=0?first:0}return {current:day.activities[current],next:day.activities[current+1]||null,later:day.activities.slice(current+2)}}
