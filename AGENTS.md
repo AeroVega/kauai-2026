@@ -96,7 +96,8 @@ iOS 26 can temporarily report an erroneously wide CSS viewport in installed PWAs
 The current implementation intentionally has two safeguards:
 
 - `index.html` contains an early viewport-recovery check that detects an iOS device whose reported `innerWidth` is implausibly wider than `screen.width` and briefly restores the normal `width=device-width` viewport before restoring `viewport-fit=cover`.
-- `styles.css` contains a narrow touch-device portrait fallback using hover/pointer capability and aspect ratio. It restores the iPhone bottom navigation and mobile single-column layout after the desktop media queries, without applying that fallback to iPad portrait.
+- `index.html` classifies a narrow portrait touch screen from `screen.width`, `screen.height`, and touch capability before the stylesheet loads; this keeps the iPhone fallback active even while the CSS viewport is incorrectly wide.
+- `styles.css` applies the fallback after the desktop media-query rules. The physical-screen ratio threshold excludes iPad portrait while restoring the iPhone bottom navigation and mobile single-column layout.
 
 Do not remove or weaken these safeguards without testing the installed iPhone PWA on the affected iOS/WebKit version. Do not replace them by simply removing the desktop breakpoint, because iPad and desktop intentionally use the wider-screen navigation/layout.
 

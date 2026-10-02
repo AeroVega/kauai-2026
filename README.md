@@ -27,6 +27,8 @@ The web app uses structured itinerary data in `itinerary.json`. It does **not** 
 - GitHub Pages deployment through GitHub Actions
 - ES-module JavaScript split by responsibility
 
+The responsive layout includes an iPhone safeguard for iOS 26 standalone PWAs that can briefly report an erroneously wide CSS viewport. A physical-screen check restores the narrow portrait layout while preserving the top navigation on iPad and desktop.
+
 ## Using the dashboard on iPhone or iPad
 
 You do **not** need to install anything from the App Store.

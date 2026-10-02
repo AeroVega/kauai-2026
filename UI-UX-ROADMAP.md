@@ -337,7 +337,7 @@ Before calling the app “Final”:
 ### 2026-10-02 · iOS 26 PWA viewport safeguard
 
 - Added early iOS viewport recovery for the known temporarily-wide standalone/PWA viewport condition.
-- Added a narrow touch-device portrait CSS fallback after desktop media-query rules so iPhone retains the floating bottom navigation without changing iPad/desktop behavior.
+- Added a physical-screen/touch check before stylesheet loading and a narrow portrait fallback after desktop media-query rules, so a wide erroneous CSS viewport cannot prevent iPhone from receiving the floating bottom navigation. iPad portrait and desktop retain their top navigation.
 - Documented the safeguard and the requirement to test the installed iPhone PWA before removing it.
 
 

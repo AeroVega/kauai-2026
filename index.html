@@ -8,6 +8,8 @@
   const m=document.getElementById("viewportMeta");
   if(!m)return;
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const narrowTouchPortrait=navigator.maxTouchPoints>0&&screen.width<screen.height&&screen.width/screen.height<=3/5;
+  if(narrowTouchPortrait)document.documentElement.classList.add("narrow-touch-portrait");
   if(ios&&window.innerWidth>screen.width*1.5){
     m.content="width=device-width,initial-scale=1";
     requestAnimationFrame(()=>{m.content="width=device-width,initial-scale=1,viewport-fit=cover"});
