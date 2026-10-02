@@ -1,51 +1,59 @@
-# Kauaʻi 2026 Dashboard — Design Critique
+# Kauaʻi dashboard design review
 
-**Review date:** October 2, 2026  
-**Code reviewed:** remote `main`, commit `45e5fc9`  
-**Production:** [aerovega.github.io/kauai-2026](https://aerovega.github.io/kauai-2026/)  
-**Production build shown in More:** `45e5fc90eaf2c2fa64f236d8fd1e5677d91116c9`
+Review date: October 2, 2026. This pass builds on remote `main` at `4773b49` and reviews the feature-branch changes locally. The earlier production review and first-event/icon changes are recorded in the roadmap. This review does not certify a production deployment or a physical Apple device.
 
-## Summary
+## Assessment
 
-The dashboard feels calm and readable. It answers “what is coming up?” quickly at the **day level**, but the pre-trip Today card does not yet answer it at the **activity level**. The overall palette fits the Home Screen icon; the header mark and navigation glyphs do not yet share the icon’s visual language.
+The four destinations are the right structure. Today provides orientation, Plan holds the full itinerary, Map hands navigation to an existing service, and More keeps secondary tools out of the primary workflow. The warm background, teal accents, generous spacing, and manual dark mode fit a calm family dashboard. The cohesive navigation icons and first-event preview from the preceding pass are useful improvements.
 
-## 1. Can someone find the next event in two seconds?
+The dashboard needed less repetition and more dependable behavior. Repeating "Kauai 2026 Dashboard" as a large page title consumed phone space without helping someone find the next event. Plan and Map introductions explained what their controls already communicated. Family-path helper text repeated the actual family notes. Meanwhile, reservation rows omitted existing action text, small links were difficult to tap, and selected navigation existed only as a visual state.
 
-On the review date, the live Today screen showed “Trip starts in 20 days,” “Thu Oct 22 · Day 1,” and **“Arrival · settle in.”** That makes the next itinerary day easy to identify. However, the first activity in Day 1—**Arrive in Līhuʻe at 11:50 AM**—is only visible after opening the day. The pre-trip card therefore passes a “what is the next day?” test more clearly than a “what is the next event?” test.
+The most consequential defect was in Today. Both Day 9 and completion used the same index, so October 30 showed a completed trip. The clock also followed the device timezone, which could switch the itinerary day early when someone retained a mainland timezone. Alternative boat operators could appear as consecutive activities even though no operator had been chosen.
 
-During the trip, the `Now / Next / Later` structure puts activity titles on the Today screen. Its timing is inferred from the current clock and activity time strings. Since many entries are approximate and durations are not consistently known, “Now” can imply more certainty than the data supports.
+The Map list is adequate for the current data. A custom map or route planner would add maintenance without solving an observed problem. Family paths should continue to show the existing notes until the family supplies explicit shared anchors and reunion points. Keyword-based activity emphasis remains an approximation; an accent must not imply that participation is required.
 
-**Suggested refinement:** Show the first Day 1 activity and time in the pre-trip card, with the countdown as secondary context. During the trip, keep the next activity prominent and use “Now” only when the schedule supports that claim.
+## Changes implemented
 
-Relevant implementation: [Today view](https://github.com/AeroVega/kauai-2026/blob/main/js/views/today.js) and [time-flow helper](https://github.com/AeroVega/kauai-2026/blob/main/js/utils.js).
+| Finding | Result |
+| --- | --- |
+| Repeated identity and explanatory copy | Page titles now match Today, Plan, Map, and More. Removed duplicate countdown, unnecessary section labels, family helper copy, and guessed "Anchor" badges. |
+| Ad hoc metadata and small targets | Added a compact type scale, stronger light-mode secondary-text contrast, wrapping for narrow layouts, and minimum 44-pixel control heights. Kept readable body text. |
+| Incomplete navigation semantics | Selected navigation uses `aria-current`. Focus moves to the new heading. Day detail returns to its originating Today or Plan screen, and adjacent-day navigation resets the phone content scroller. |
+| Missing reservation action | More displays each record's existing action, including approval and hold conditions. External links have destination-specific accessible names and consistent SVG handoff icons. Today always offers a reservation handoff when open records exist. |
+| Day 9 incorrectly completed | October 30 remains Day 9. Completion starts October 31 in Kauaʻi. Regression tests cover every trip day and the midnight boundary. |
+| Device timezone and inferred alternatives | Today uses Pacific/Honolulu, calendar-day arithmetic, and a cautious timeline. Untimed entries and unresolved choices/access checks do not establish a current activity. All entries remain available in Plan. |
+| App left open across a boundary | Today refreshes on visibility changes and checks for changed content once a minute, without redrawing an unchanged page or replacing a focused control. |
+| Fragile offline errors | The service worker caches successful same-origin responses, falls back to matching cached resources, and reserves the HTML fallback for navigation. It preserves unrelated caches. Registration or decorative-image failure no longer replaces a usable dashboard. Diagnostics remain behind a disclosure. |
 
-## 2. Do the colors and theme fit the app icon?
+The itinerary JSON, planning workbook, manual appearance preference, iPhone viewport safeguards, icon references, and commit-SHA build placeholders remain intact. Feature-branch validation runs the date regressions in four device timezones. Publishing still follows the existing main-branch Pages workflow.
 
-**Yes, at the palette level.** The icon’s teal, green, amber, and warm ivory are reflected in the dashboard’s teal accents, warm light background, and amber reservation states. Dark mode uses a restrained charcoal and dark-green base with teal accents. The icon can remain more saturated than the interface; its full gradient does not need to be repeated throughout the app.
+## Remaining work while approval is pending
 
-**The identity graphics are less aligned.** The header uses a pink hibiscus emoji, while the app icon depicts a palm and calendar. Navigation uses several unrelated Unicode glyphs. A cohesive, simple icon set—or a more neutral header mark—would tie the interface to the icon without adding visual noise.
+These checks can proceed with the draft itinerary. They do not require deciding the vacation.
 
-Relevant implementation: [app shell and navigation](https://github.com/AeroVega/kauai-2026/blob/main/index.html) and [theme styles](https://github.com/AeroVega/kauai-2026/blob/main/styles.css).
+- Test the installed iPhone PWA on the affected iOS 26/WebKit version. Check launch, rotation, dock position, scroll, larger text, and safe areas. Chromium emulation cannot certify the physical-screen viewport safeguard.
+- Test iPad portrait, landscape, and Split View in Safari. Confirm the brand and navigation stay usable with larger system text.
+- Run VoiceOver and keyboard checks on Apple devices. Review heading navigation, link names, selected destinations, and the appearance switch with a family member.
+- Rehearse offline startup and a deployment update on an installed device after merging. Confirm the visible build changes and the itinerary still opens without connectivity. External Maps and booking sites need their own connectivity; the dashboard does not promise they work offline.
+- Have the family try finding a day, opening directions, and locating a reservation action using the current draft. Only add further help or controls if these tasks reveal a problem.
+- Verify provider and official-source link destinations where network access allows. Recheck them after approval; current operator availability and access conditions are separate from URL validity.
 
-## 3. Current state of the roadmap areas
+A visual island overview is optional. Keep it deferred unless the location list proves insufficient in family review. Additional activity detail should come from useful confirmed fields, rather than more UI.
 
-| Area | Current state | Remaining design work |
-| --- | --- | --- |
-| True Today | Date-aware pre-trip, in-trip, and post-trip states are implemented. | No major behavior gap identified in this review. |
-| What’s next? | In-trip `Now / Next / Later` is implemented. | Surface the first activity and time in the pre-trip card; calibrate the certainty of “Now.” |
-| Activity cards | Important anchors have richer detail, timing, and external links in day details. | Keep the treatment selective; only add fields supported by useful itinerary data. |
-| Family paths | Family-specific notes appear in Today and day details. | Make shared anchors and reunion points consistently visible without turning the plan into task management. |
-| Map / route view | A location list and external Maps handoffs are present. | A simple spatial overview is still absent; it can be explored without deciding routes. |
-| Reservations | Status, time, and links appear in More; Today surfaces selected open actions. | Current lightweight records are adequate for this pass; avoid expanding into a booking system. |
-| Icon system | Prototype glyphs remain in navigation, and the header emoji differs from the app icon. | Use a consistent, restrained icon family. |
-| Typography and noise | The main title hierarchy is strong, but sizes are still ad hoc. Today also places open items and Watch content near the primary next-event card. | Normalize a small type scale and confirm secondary content stays secondary on phone screens. |
-| Accessibility and device readiness | Contrast, touch target, text scaling, landscape iPad, and offline checks remain on the roadmap. | Complete the planned audits on iPhone and iPad, including the installed PWA where practical. |
-| Home Screen icon | The finalized PNG is linked by the app shell and manifest. | Complete; the earlier note that it was missing is stale. |
+## Work that depends on approval or confirmed information
 
-Final itinerary/reservation verification and family QA remain dependent on planning decisions and the family’s review, as indicated by the project scope.
+- Explicitly reconcile the approved itinerary into `itinerary.json` and the planning artifact. Preserve the workbook's revision history.
+- Confirm Day 3 waterfall availability, the Day 4 access plan, the Day 6 operator choice, the luau and dinner decisions, and departure-day car-return timing. Change booking statuses only when their real state changes.
+- Add actual reservation times, confirmed locations, optional-participation fields, and reunion points when supplied. Replace inferred activity emphasis with explicit anchor flags where useful.
+- Verify final location and navigation destinations, operator instructions, park/ocean conditions, and all external links close to travel.
+- Complete family acceptance testing against the approved plan before calling the app final.
 
-## Review scope
+## Validation and limits
 
-The production page was reviewed in a desktop browser in its persisted dark theme, and the light-theme palette was checked in the current CSS. This was not a physical iPhone/iPad, installed-PWA, dynamic-text, or offline test. The production build identifier matched the reviewed `main` commit.
+Six date/flow regressions passed in UTC, America/Denver, Pacific/Honolulu, and Europe/London. JavaScript syntax and itinerary JSON validation passed. Key metadata, link, and status-chip color pairs exceeded 4.5:1 in both themes. This is not a full accessibility certification.
 
-See [UI-UX-ROADMAP.md](UI-UX-ROADMAP.md) for the recorded follow-ups.
+Local Chromium checks passed at 320×568, 390×844, 844×390, 768×1024, 1024×768, and 600×900. The checks covered all primary views in both themes, 44-pixel control heights, 200% root text scaling, all nine day details, heading focus, return navigation, and phone-scroller resets. Screenshots were reviewed for phone and tablet hierarchy and appearance.
+
+A simulated real-clock test crossed Kauaʻi midnight from Day 9 into completion without reloading. A warm-cache offline test reopened the app, visited all tabs, read cached JSON, and confirmed uncached JavaScript failed instead of receiving HTML. A temporary two-build fixture verified cache replacement, unrelated-cache preservation, the visible build identifier, and offline launch after updating. Registration and image-failure checks retained a usable dashboard.
+
+Physical iPhone/iPad, VoiceOver, actual browser zoom, installed-PWA updates, and production external destinations remain unverified. Root text scaling and Chromium viewport checks are useful approximations, not substitutes for those checks.

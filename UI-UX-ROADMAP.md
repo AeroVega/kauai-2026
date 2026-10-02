@@ -40,9 +40,9 @@ The design should feel calm, deliberate, and Apple-inspired: strong hierarchy, r
 These are intentionally **not** commitments to build immediately. They are the next ideas to consider when the itinerary itself becomes more settled.
 
 ### 1. True “Today” behavior
-**Status:** Implemented in Sprint A; the October 31 completion boundary and local preview clock were refined in the 2026-10-02 design follow-through.
+**Status:** Implemented. Day 9/completion separation, Kauaʻi time, and visible-app refresh have regression coverage.
 
-The current dashboard uses the first itinerary day as its default. Eventually the Today view should understand the actual trip date and automatically surface the current day.
+Today uses the Kauaʻi date to select the current trip day. October 30 remains Day 9; completion starts October 31. The local preview clock supports checking each state without changing itinerary data.
 
 Potential behavior:
 
@@ -130,7 +130,7 @@ Future possibilities:
 **Do not build:** turn-by-turn navigation, a custom map engine, or a replacement for Apple Maps.
 
 ### 6. Reservations as lightweight records
-**Status:** Partially implemented
+**Status:** Existing status, time, site handoff, and action text implemented; confirmation details await bookings.
 
 Reservations already appear as links and statuses.
 
@@ -164,9 +164,9 @@ The current inline SVG set uses:
 Avoid expanding the set for decoration; revisit optical weight only if device review identifies a problem.
 
 ### 8. Refine typography hierarchy
-**Status:** Partially implemented
+**Status:** Initial type scale and metadata pass implemented; physical-device review remains.
 
-The page has a clear dominant title and readable body type, but individual sizes remain ad hoc and status/metadata labels are small.
+Page titles match the primary destinations. A small type scale keeps body text readable and metadata at least 12 pixels; larger text and device review remain.
 
 General text was increased for readability.
 
@@ -223,9 +223,9 @@ The finalized raster Home Screen icon is `kauai-icon-1024.png`.
 - Designed as the trip-dashboard glyph: teal/turquoise glass palm tree + translucent calendar with warm yellow-orange date squares
 
 ### 12. Offline readiness
-**Status:** Partial
+**Status:** Local offline and two-build update checks passed; installed-device checks remain.
 
-The service worker currently caches the application shell and itinerary data.
+The service worker caches the application shell and itinerary data, stores successful same-origin responses, and only returns the HTML fallback for navigation.
 
 Before the final trip release:
 
@@ -247,12 +247,12 @@ Future consideration: a subtle in-app installation/help affordance only if testi
 ## Accessibility / usability pass
 
 ### 14. Touch-target audit
-**Status:** Final-pass item
+**Status:** 44-pixel control heights verified in local phone/tablet browser checks; physical-device pass remains.
 
 Verify controls are comfortable to tap on both iPhone and iPad.
 
 ### 15. Contrast and dark-mode audit
-**Status:** Final-pass item
+**Status:** Local light/dark visual checks and key text-color ratios passed; Apple-device review remains.
 
 Test:
 
@@ -264,12 +264,12 @@ Test:
 - Disabled/unavailable states
 
 ### 16. Dynamic text / zoom behavior
-**Status:** Final-pass item
+**Status:** Local 200% root-text checks passed; system text and actual browser zoom remain.
 
 Test larger system text and browser zoom where practical. Avoid layouts that depend on text staying at one exact size.
 
 ### 17. Landscape iPad layout
-**Status:** Initial responsive support exists; final audit pending
+**Status:** Local portrait, landscape, and reduced-width checks passed; Safari/device audit remains
 
 Test the actual iPad in:
 
@@ -336,21 +336,49 @@ Before calling the app “Final”:
 
 ## Design review · 2026-10-02
 
-See [DESIGN-CRITIQUE-2026-10-02.md](DESIGN-CRITIQUE-2026-10-02.md) for the full review of remote `main` and the deployed PWA.
+See [DESIGN-CRITIQUE-2026-10-02.md](DESIGN-CRITIQUE-2026-10-02.md) for the current assessment, implemented changes, validation limits, and the split between pre-approval work and itinerary-dependent work.
 
 Follow-ups from the review:
 
 - [x] Make the first Day 1 activity and its time visible in the pre-trip Today card while keeping the trip countdown secondary.
 - [x] Change the in-trip label to “Around now” where event durations are unknown, and show “Up next” before the first timed activity.
 - [x] Align the brand mark and navigation icons; stop the primary Today card from stretching beside the secondary open-items card.
-- When Map work resumes, prototype a simple spatial overview without assuming routes or building custom navigation.
+- Keep a Map overview deferred unless family use shows the existing location list is insufficient.
 - Continue the typography, accessibility, device-layout, and offline-readiness passes already listed above.
 
 Already implemented in the reviewed build: date-aware Today states, anchor-focused activity details, family-specific notes, reservation status summaries and links, and the finalized Home Screen icon. The Home Screen icon is not outstanding work.
 
 For visual checks, Today accepts the local-only `previewAt` query parameter (for example, `?previewAt=2026-10-26T09:00`). It is ignored outside localhost and is documented in the README.
 
+## Pre-approval follow-through
+
+- [x] Reduce repeated branding, countdowns, section labels, and self-explanatory copy.
+- [x] Expose existing reservation actions without changing statuses or itinerary decisions.
+- [x] Add selected-navigation semantics, heading focus, origin-aware day return, and scroller resets.
+- [x] Normalize metadata sizes, improve light-mode secondary contrast, and verify 44-pixel control heights locally.
+- [x] Test every trip day, Kauaʻi midnight, preview restrictions, and unresolved activity choices in four device timezones.
+- [x] Test cached offline startup, resource-specific fallbacks, and replacement between two stamped builds locally.
+- [x] Check all views/themes at six viewport sizes and 200% root text scaling.
+- [ ] Verify installed iPhone PWA behavior on iOS 26, including rotation and viewport recovery.
+- [ ] Verify iPad Safari portrait, landscape, Split View, and larger system text.
+- [ ] Complete Apple-device VoiceOver, keyboard, and family usability checks.
+- [ ] Rehearse production update/offline behavior on an installed device after merge.
+- [ ] Check current provider/source URL destinations and repeat after itinerary approval.
+
+Final itinerary, bookings, confirmed reunion/anchor data, and final-trip family QA remain in the final readiness checklist. Local browser checks do not mark physical-device checks complete.
+
 ## Change log
+
+### 2026-10-02 · Pre-approval usability and reliability pass
+
+- Simplified page hierarchy and repeated helper copy; showed reservation action fields already present in JSON.
+- Added a small type scale, wrapping, 44-pixel controls, accessible selected navigation and external-link names, and a visible manual appearance switch.
+- Made day detail return to its originating view and reset the phone scroller on adjacent-day navigation.
+- Separated Day 9 from completion, fixed the real clock to Kauaʻi, and refreshed Today when visible or its content changes.
+- Kept untimed entries and unresolved alternatives/access checks out of inferred current activity.
+- Hardened same-origin caching and typed offline fallbacks; kept successful startup usable if offline registration or an image fails.
+- Added branch/PR regression validation and updated the assessment with local browser evidence and outstanding device checks.
+
 
 ### 2026-10-02 · Design critique follow-through
 

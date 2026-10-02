@@ -1,7 +1,8 @@
-import {esc,tripDates,localDate,dashboardNow,previewTimeLabel,dayForToday,progressForToday,dayFlow} from "../utils.js";
+import {esc,tripDates,localDate,dashboardNow,previewTimeLabel,dayForToday,progressForToday,dayFlow,calendarDays} from "../utils.js";
 
 // Shared helpers (imported by the other views so no new files are needed).
 export const s=v=>esc(v==null?"":String(v));
+export const externalIcon='<svg class="external-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4 10 14M10 4H4v16h16v-6"/></svg>';
 export const isBooked=r=>Boolean(r)&&String(r.status).toUpperCase()==="BOOKED";
 export const chip=t=>'<span class="status-chip '+(String(t).toUpperCase()==="BOOKED"?"ok":"todo")+'">'+s(t)+'</span>';
 
@@ -33,8 +34,8 @@ export function today(data){
   const currentTime=dashboardNow(),previewLabel=previewTimeLabel(),{start,end}=tripDates(),now=localDate(currentTime);
   const idx=dayForToday(now,start,end,data),pct=progressForToday(now,start,end);
   const total=data.days.length;
-  const pre=idx===null,done=!pre&&idx===total;
-  const daysTo=pre?Math.ceil((start-now)/86400000):0;
+  const pre=idx===null,done=!pre&&idx>total;
+  const daysTo=pre?calendarDays(now,start):0;
   const toGo=daysTo===1?"1 day":daysTo+" days";
   const cur=(!pre&&!done)?data.days[idx-1]:null;
 
@@ -61,11 +62,11 @@ export function today(data){
   // Side card: trip summary + open decisions
   const open=(data.reservations||[]).filter(r=>!isBooked(r));
   const side='<section class="card trip-progress"><div class="progress-top"><div><p class="eyebrow">Trip</p><strong>'+total+' days · '+(total-1)+' nights</strong></div>'
-    +'<span class="small">'+(pre?toGo+" to go":done?"Complete":idx+" of "+total)+'</span></div>'
+    +'<span class="small">'+(pre?"":done?"Complete":"Day "+idx+" of "+total)+'</span></div>'
     +(pre?"":'<div class="progress"><span style="width:'+pct+'%"></span></div>')
     +'<p class="subtle side-base">'+s(data.trip&&data.trip.base)+'</p>'
     +(open.length?'<div class="side-open"><p class="eyebrow">Still open</p>'+open.slice(0,3).map(openRow).join("")
-      +(open.length>3?'<button class="text-link" data-view="more">All '+open.length+' open items</button>':"")+'</div>':"")
+      +'<button class="text-link" data-view="more">View reservations</button>'+'</div>':"")
     +'</section>';
 
   // Today's paths (the "different paths, same place" idea)
@@ -83,7 +84,7 @@ export function today(data){
   const list=pre?data.days.slice(0,2):(done?[]:data.days.slice(idx,idx+2));
   let upcoming="";
   if(list.length){
-    upcoming='<section class="section"><p class="eyebrow">Itinerary</p><h2 class="section-title">'+(pre?"Coming up":"Up next")+'</h2><div class="day-list">'+list.map(dayRow).join("")+'</div>'
+    upcoming='<section class="section"><h2 class="section-title">'+(pre?"Coming up":"Up next")+'</h2><div class="day-list">'+list.map(dayRow).join("")+'</div>'
       +'<button class="text-link" data-view="plan">See all '+total+' days</button></section>';
   }else{
     upcoming='<section class="section"><button class="action secondary" data-view="plan">View the whole trip</button></section>';
@@ -93,6 +94,6 @@ export function today(data){
     ?'<section class="section"><div class="card info-card"><h3>Watch</h3>'+data.watch.map(w=>'<div class="link-row"><div><strong>'+s(w.title)+'</strong><br><span>'+s(w.note)+'</span></div><span class="status-chip">'+s(w.level)+'</span></div>').join("")+'</div></section>'
     :"";
 
-  return '<section class="hero"><p class="eyebrow">'+s(previewLabel?"Preview · "+previewLabel:RANGE_SHORT)+'</p><h1>Kauai 2026<br><em>Dashboard</em></h1></section>'
+  return '<section class="hero"><p class="eyebrow">'+s(previewLabel?"Preview · "+previewLabel:RANGE_SHORT+" · Kauaʻi time")+'</p><h1>Today</h1></section>'
     +'<div class="dashboard-grid">'+card+side+'</div>'+paths+upcoming+watch;
 }
