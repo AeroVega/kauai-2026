@@ -329,11 +329,18 @@ Before calling the app “Final”:
 **Focus:** polish the in-trip experience without adding planning complexity.
 
 - [x] Move appearance control into More
+- [x] Keep appearance strictly user-controlled; never infer it from time of day
 - [x] Add a quiet build identifier to More
 - [x] Refine activity cards around important anchors
 - [x] Make family branching visually clearer without turning it into project management
 
 ## Change log
+
+### 2026-10-02 · UI polish → More hierarchy + navigation
+
+- Removed explanatory copy from the More header and Appearance card.
+- Changed the appearance control to a manual visual switch.
+- Aligned primary navigation with the dashboard title on wider screens.
 
 ### 2026-10-02 · Sprint B complete → Activity anchors + family paths
 
