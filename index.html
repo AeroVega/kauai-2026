@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f4ef">
+<meta name="theme-color" content="#f5f4ef" id="themeColor">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Kauaʻi">
@@ -30,6 +30,7 @@
 </div>
 </div>
 <script>
+(function(){const dark=localStorage.getItem("kauai-theme")==="dark";const m=document.getElementById("themeColor");if(dark){document.documentElement.dataset.theme="dark";if(m)m.content="#101311"}})();
 if("serviceWorker"in navigator){navigator.serviceWorker.register("./service-worker.js").then(r=>r.update()).catch(()=>{})}
 function showStartupError(error,source){const a=document.getElementById("app");if(!a)return;const message=error?.message||String(error||"Unknown error"),stack=error?.stack||"No stack trace was provided by the browser.",file=source?.filename||"",line=source?.lineno?source.lineno+":"+source.colno:"";a.innerHTML='<div class="empty startup-error"><strong>The dashboard could not start.</strong><p>Technical details are below.</p><details open><summary>Error details</summary><pre id="startupDiagnostics"></pre></details><button class="action" id="reloadStartup">Reload</button></div>';const pre=document.getElementById("startupDiagnostics");if(pre)pre.textContent="Message: "+message+"\n"+(file?"Source: "+file+(line?" ("+line+")":"")+"\n":"")+"\nStack:\n"+stack+"\n\nURL: "+location.href+"\nTime: "+new Date().toISOString();document.getElementById("reloadStartup")?.addEventListener("click",()=>location.reload())}
 window.addEventListener("error",e=>showStartupError(e.error||e.message,e),true);
