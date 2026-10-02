@@ -89,6 +89,17 @@ The finalized Home Screen icon is the raster `kauai-icon-1024.png`. iOS uses it 
 
 After changes, verify the repository, cache version, deployment workflow, and—when practical—the installed/PWA experience.
 
+## 5a. iOS/WebKit viewport safeguard
+
+iOS 26 can temporarily report an erroneously wide CSS viewport in installed PWAs. On iPhone this can activate the desktop media queries even when the physical device is narrow.
+
+The current implementation intentionally has two safeguards:
+
+- `index.html` contains an early viewport-recovery check that detects an iOS device whose reported `innerWidth` is implausibly wider than `screen.width` and briefly restores the normal `width=device-width` viewport before restoring `viewport-fit=cover`.
+- `styles.css` contains a narrow touch-device portrait fallback using hover/pointer capability and aspect ratio. It restores the iPhone bottom navigation and mobile single-column layout after the desktop media queries, without applying that fallback to iPad portrait.
+
+Do not remove or weaken these safeguards without testing the installed iPhone PWA on the affected iOS/WebKit version. Do not replace them by simply removing the desktop breakpoint, because iPad and desktop intentionally use the wider-screen navigation/layout.
+
 ## 6. Responsive/UI tribal knowledge
 
 iPhone and iPad are first-class targets.

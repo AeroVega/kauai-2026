@@ -334,6 +334,13 @@ Before calling the app “Final”:
 
 ## Change log
 
+### 2026-10-02 · iOS 26 PWA viewport safeguard
+
+- Added early iOS viewport recovery for the known temporarily-wide standalone/PWA viewport condition.
+- Added a narrow touch-device portrait CSS fallback after desktop media-query rules so iPhone retains the floating bottom navigation without changing iPad/desktop behavior.
+- Documented the safeguard and the requirement to test the installed iPhone PWA before removing it.
+
+
 ### 2026-10-02 · PWA polish → Home Screen icon
 
 - Replaced the stale SVG Home Screen icon references with the finalized `kauai-icon-1024.png`.
