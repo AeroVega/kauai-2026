@@ -8,8 +8,18 @@
   const m=document.getElementById("viewportMeta");
   if(!m)return;
   const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
-  const narrowTouchPortrait=navigator.maxTouchPoints>0&&screen.width<screen.height&&screen.width/screen.height<=3/5;
-  if(narrowTouchPortrait)document.documentElement.classList.add("narrow-touch-portrait");
+  const narrowTouchPortrait=()=>navigator.maxTouchPoints>0&&screen.width<screen.height&&screen.width/screen.height<=3/5;
+  const syncPhoneLayout=()=>{
+    const isPhonePortrait=narrowTouchPortrait();
+    document.documentElement.classList.toggle("narrow-touch-portrait",isPhonePortrait);
+    if(isPhonePortrait){
+      const height=window.visualViewport?.height||window.innerHeight;
+      document.documentElement.style.setProperty("--app-viewport-height",height+"px");
+    }
+  };
+  syncPhoneLayout();
+  window.addEventListener("orientationchange",()=>requestAnimationFrame(syncPhoneLayout));
+  window.visualViewport?.addEventListener("resize",syncPhoneLayout);
   if(ios&&window.innerWidth>screen.width*1.5){
     m.content="width=device-width,initial-scale=1";
     requestAnimationFrame(()=>{m.content="width=device-width,initial-scale=1,viewport-fit=cover"});
@@ -31,7 +41,7 @@
   <a class="brand" href="./" aria-label="Kauai 2026 Dashboard">
     <span class="brand-mark">🌺</span><span>Kauai 2026 Dashboard</span>
   </a>
-  <nav class="nav" aria-label="Primary navigation">
+  <nav class="nav nav-desktop" aria-label="Primary navigation">
     <button class="nav-item active" data-view="today"><span class="nav-icon">⌂</span><span>Today</span></button>
     <button class="nav-item" data-view="plan"><span class="nav-icon">☷</span><span>Plan</span></button>
     <button class="nav-item" data-view="map"><span class="nav-icon">⌖</span><span>Map</span></button>
@@ -42,6 +52,12 @@
 <div class="layout">
   <main id="app" aria-live="polite"><div class="empty">Loading Kauaʻi 2026…</div></main>
 </div>
+<nav class="nav nav-mobile" aria-label="Primary navigation">
+  <button class="nav-item active" data-view="today"><span class="nav-icon">⌂</span><span>Today</span></button>
+  <button class="nav-item" data-view="plan"><span class="nav-icon">☷</span><span>Plan</span></button>
+  <button class="nav-item" data-view="map"><span class="nav-icon">⌖</span><span>Map</span></button>
+  <button class="nav-item" data-view="more"><span class="nav-icon">•••</span><span>More</span></button>
+</nav>
 </div>
 <script>
 (function(){const dark=localStorage.getItem("kauai-theme")==="dark";const m=document.getElementById("themeColor");if(dark){document.documentElement.dataset.theme="dark";if(m)m.content="#101311"}})();

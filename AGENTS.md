@@ -97,7 +97,8 @@ The current implementation intentionally has two safeguards:
 
 - `index.html` contains an early viewport-recovery check that detects an iOS device whose reported `innerWidth` is implausibly wider than `screen.width` and briefly restores the normal `width=device-width` viewport before restoring `viewport-fit=cover`.
 - `index.html` classifies a narrow portrait touch screen from `screen.width`, `screen.height`, and touch capability before the stylesheet loads; this keeps the iPhone fallback active even while the CSS viewport is incorrectly wide.
-- `styles.css` applies the fallback after the desktop media-query rules. The physical-screen ratio threshold excludes iPad portrait while restoring the iPhone bottom navigation and mobile single-column layout.
+- `styles.css` applies the fallback after the desktop media-query rules. The physical-screen ratio threshold excludes iPad portrait while restoring the iPhone mobile layout.
+- On narrow touch portrait screens, the bottom navigation is a normal flex child outside the sticky header. The app shell fills the visible viewport, the content pane scrolls, and the navigation stays at the bottom without `position: fixed`.
 
 Do not remove or weaken these safeguards without testing the installed iPhone PWA on the affected iOS/WebKit version. Do not replace them by simply removing the desktop breakpoint, because iPad and desktop intentionally use the wider-screen navigation/layout.
 
