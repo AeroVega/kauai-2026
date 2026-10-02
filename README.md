@@ -23,9 +23,11 @@ The web app uses structured itinerary data in `itinerary.json`. It does **not** 
 - Reservations and useful external links
 - Family-persona context
 - Persistent light/dark appearance preference
-- PWA manifest and service-worker caching
+- PWA manifest, service-worker caching, and finalized iOS Home Screen icon
 - GitHub Pages deployment through GitHub Actions
 - ES-module JavaScript split by responsibility
+
+The responsive layout includes an iPhone safeguard for iOS 26 standalone PWAs that can briefly report an erroneously wide CSS viewport. A physical-screen check restores the narrow portrait layout while preserving the top navigation on iPad and desktop.
 
 ## Using the dashboard on iPhone or iPad
 
@@ -74,6 +76,7 @@ Kauaʻi 2026 repository
 ├── index.html                # PWA shell
 ├── styles.css                # visual system
 ├── manifest.json             # PWA metadata
+├── kauai-icon-1024.png       # finalized iOS/PWA Home Screen icon
 └── service-worker.js         # update/offline behavior
 ```
 
@@ -100,7 +103,8 @@ The itinerary remains under development. Major itinerary decisions belong in the
 | `js/utils.js` | Shared helpers |
 | `js/views/` | Individual UI views |
 | `itinerary.json` | Structured application itinerary data |
-| `manifest.json` | PWA metadata |
+| `manifest.json` | PWA metadata and app icon declaration |
+| `kauai-icon-1024.png` | Finalized iOS/PWA Home Screen icon |
 | `service-worker.js` | Offline/cache/update behavior |
 | `.github/workflows/pages.yml` | GitHub Pages deployment |
 | `UI-UX-ROADMAP.md` | UI/product backlog and decisions |

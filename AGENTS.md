@@ -67,7 +67,8 @@ The dashboard is a planning companion, not the authority that decides the vacati
 - `js/views/more.js` — secondary tools and appearance.
 - `styles.css` — visual system and responsive layout.
 - `itinerary.json` — application data.
-- `manifest.json` — PWA metadata.
+- `manifest.json` — PWA metadata and app icon declaration.
+- `kauai-icon-1024.png` — finalized iOS/PWA Home Screen icon.
 - `service-worker.js` — update/offline behavior.
 - `UI-UX-ROADMAP.md` — UI/product backlog and decisions.
 - `README.md` — project documentation.
@@ -84,7 +85,21 @@ The service worker now treats HTML and application JavaScript as **network-first
 
 The More tab contains a small build identifier because many UI changes will not be visually obvious enough to prove a device received a new deployment.
 
+The finalized Home Screen icon is the raster `kauai-icon-1024.png`. iOS uses it through the `apple-touch-icon` link in `index.html`; the same PNG is declared by the PWA manifest and precached by the service worker. Keep these references aligned if the icon changes.
+
 After changes, verify the repository, cache version, deployment workflow, and—when practical—the installed/PWA experience.
+
+## 5a. iOS/WebKit viewport safeguard
+
+iOS 26 can temporarily report an erroneously wide CSS viewport in installed PWAs. On iPhone this can activate the desktop media queries even when the physical device is narrow.
+
+The current implementation intentionally has two safeguards:
+
+- `index.html` contains an early viewport-recovery check that detects an iOS device whose reported `innerWidth` is implausibly wider than `screen.width` and briefly restores the normal `width=device-width` viewport before restoring `viewport-fit=cover`.
+- `index.html` classifies a narrow portrait touch screen from `screen.width`, `screen.height`, and touch capability before the stylesheet loads; this keeps the iPhone fallback active even while the CSS viewport is incorrectly wide.
+- `styles.css` applies the fallback after the desktop media-query rules. The physical-screen ratio threshold excludes iPad portrait while restoring the iPhone bottom navigation and mobile single-column layout.
+
+Do not remove or weaken these safeguards without testing the installed iPhone PWA on the affected iOS/WebKit version. Do not replace them by simply removing the desktop breakpoint, because iPad and desktop intentionally use the wider-screen navigation/layout.
 
 ## 6. Responsive/UI tribal knowledge
 

@@ -2,12 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" id="viewportMeta">
+<script>
+(function(){
+  const m=document.getElementById("viewportMeta");
+  if(!m)return;
+  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const narrowTouchPortrait=navigator.maxTouchPoints>0&&screen.width<screen.height&&screen.width/screen.height<=3/5;
+  if(narrowTouchPortrait)document.documentElement.classList.add("narrow-touch-portrait");
+  if(ios&&window.innerWidth>screen.width*1.5){
+    m.content="width=device-width,initial-scale=1";
+    requestAnimationFrame(()=>{m.content="width=device-width,initial-scale=1,viewport-fit=cover"});
+  }
+})();
+</script>
 <meta name="theme-color" content="#f5f4ef" id="themeColor">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Kauaʻi">
 <link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="kauai-icon-1024.png">
 <link rel="stylesheet" href="styles.css">
 <title>Kauai 2026 Dashboard</title>
 </head>
