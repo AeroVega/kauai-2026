@@ -1,2 +1,14 @@
-import {esc} from "../utils.js";
-export function map(data){return '<section class="hero"><p class="eyebrow">Locations</p><h1>Where the plan goes.</h1><p>Keep navigation native. The dashboard will organize places and hand directions off to Maps.</p></section><div class="map-placeholder"><div class="map-placeholder-inner"><div class="pin">⌖</div><h2>Route view next</h2><p>Location cards are already wired to external navigation. A visual route layer comes next.</p></div></div><section class="section day-list">'+data.locations.map(l=>'<a class="day-row" href="'+esc(l.maps)+'" target="_blank" rel="noopener"><span class="num">'+esc(l.kind)+'</span><div><h3>'+esc(l.name)+'</h3><p>'+esc(l.note)+'</p></div><span class="chevron">›</span></a>').join("")+'</section>'}
+import {s} from "./today.js";
+
+export function map(data){
+  const rows=(data.locations||[]).map(l=>{
+    const inner='<span class="day-main"><span class="day-title">'+s(l.name)+'</span><span class="day-sub">'+s(l.note)+'</span>'
+      +(l.kind?'<span class="row-tags"><span class="row-tag">'+s(l.kind)+'</span></span>':"")
+      +'</span><span class="chevron">↗</span>';
+    return l.maps
+      ?'<a class="day-row loc-row" href="'+s(l.maps)+'" target="_blank" rel="noopener">'+inner+'</a>'
+      :'<div class="day-row loc-row">'+inner+'</div>';
+  }).join("");
+  return '<section class="hero compact"><p class="eyebrow">Locations</p><h1>Where the plan goes.</h1><p>Tap a place to open directions in Maps.</p></section>'
+    +'<div class="day-list">'+rows+'</div>';
+}
