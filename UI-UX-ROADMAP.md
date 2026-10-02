@@ -330,10 +330,16 @@ Before calling the app “Final”:
 
 - [x] Move appearance control into More
 - [x] Add a quiet build identifier to More
-- [ ] Refine activity cards around important anchors
-- [ ] Make family branching visually clearer without turning it into project management
+- [x] Refine activity cards around important anchors
+- [x] Make family branching visually clearer without turning it into project management
 
 ## Change log
+
+### 2026-10-02 · Sprint B complete → Activity anchors + family paths
+
+- Added richer activity presentation for important itinerary anchors.
+- Added a lightweight “Different paths. Same place.” family-path treatment to day details.
+- Kept activity data and family decisions sourced directly from `itinerary.json`.
 
 ### 2026-10-02 · Sprint B started → More + build visibility
 
