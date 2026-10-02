@@ -78,9 +78,11 @@ Keep the current lightweight direct-rendering architecture. Do not introduce a f
 
 Production URL: https://aerovega.github.io/kauai-2026/
 
-The service worker is cache-first. When changing cached application files, bump the cache version in `service-worker.js`. Otherwise an installed PWA can continue serving an old build and make a correct deployment look broken.
+The service worker is cache-first. **Every time a coding session finishes making updates, the deployed build/cache version must change.** The project now handles this automatically: `app.js` and `service-worker.js` contain the `__BUILD_SHA__` placeholder, and the GitHub Pages workflow replaces it with the exact `GITHUB_SHA` of the commit being deployed. This makes the visible build identifier and service-worker cache version derive from the same immutable commit hash. Do not manually replace the placeholder with a guessed or future commit hash.
 
-Current cache pattern: `kauai-dashboard-v0-X`.
+This is intentionally preferable to a hand-maintained `v0-X` cache number: every commit deployed to `main` gets a new cache namespace, preventing an installed PWA from remaining stuck on an older cached application.
+
+Current source pattern: `kauai-dashboard-__BUILD_SHA__`. At deployment, `__BUILD_SHA__` becomes the full Git commit SHA.
 
 The More tab contains a small build identifier because many future UI changes will not be visually obvious enough to prove a device received a new deployment. Update it for meaningful builds, keep it quiet, and do not put it in primary navigation.
 
@@ -130,7 +132,7 @@ After changing code:
 2. Inspect generated HTML/JS strings for malformed markup.
 3. Check responsive implications.
 4. Check theme behavior if theme/header code changed.
-5. Check PWA cache implications.
+5. Check PWA cache implications. Every completed update must deploy with a new commit-SHA-based cache/build identifier.
 6. Verify the deployed app when practical.
 7. Update the roadmap/change log when a roadmap item is materially completed.
 
