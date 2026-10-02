@@ -211,16 +211,14 @@ Do not imitate iOS merely for appearance. Use patterns when they improve compreh
 ## PWA / device experience
 
 ### 11. Proper Home Screen icon
-**Status:** Deferred
+**Status:** Implemented
 
-Create a deliberate app icon rather than relying on a generic/fallback icon.
+The finalized raster Home Screen icon is `kauai-icon-1024.png`.
 
-Consider:
-
-- Kauaʻi visual identity
-- Strong silhouette
-- Works at small sizes
-- Light/dark device contexts
+- Integrated through `index.html` as the iOS `apple-touch-icon`
+- Declared by `manifest.json`
+- Precached by `service-worker.js`
+- Designed as the trip-dashboard glyph: teal/turquoise glass palm tree + translucent calendar with warm yellow-orange date squares
 
 ### 12. Offline readiness
 **Status:** Partial
@@ -319,7 +317,7 @@ Before calling the app “Final”:
 - [ ] iPad landscape tested
 - [ ] Touch targets audited
 - [ ] Typography/accessibility pass completed
-- [ ] Home Screen icon finalized
+- [x] Home Screen icon finalized
 - [ ] Family QA completed
 
 ---
@@ -335,6 +333,12 @@ Before calling the app “Final”:
 - [x] Make family branching visually clearer without turning it into project management
 
 ## Change log
+
+### 2026-10-02 · PWA polish → Home Screen icon
+
+- Replaced the stale SVG Home Screen icon references with the finalized `kauai-icon-1024.png`.
+- Wired the same raster icon through `index.html`, `manifest.json`, and the service-worker precache.
+- Kept the icon as a direct raster asset rather than introducing an unnecessary SVG recreation.
 
 ### 2026-10-02 · UI polish → More hierarchy + navigation
 
