@@ -27,7 +27,7 @@ The design should feel calm, deliberate, and Apple-inspired: strong hierarchy, r
 - [x] Flexible / conditional / decision-status information
 - [x] External links to specialized services rather than recreating them
 - [x] External navigation handoffs
-- [ ] Persistent light/dark appearance preference (QA disagrees)
+- [x] Persistent light/dark appearance preference
 - [x] Larger general typography for readability
 - [x] PWA manifest and service-worker shell
 - [x] GitHub Pages deployment
@@ -40,7 +40,7 @@ The design should feel calm, deliberate, and Apple-inspired: strong hierarchy, r
 These are intentionally **not** commitments to build immediately. They are the next ideas to consider when the itinerary itself becomes more settled.
 
 ### 1. True “Today” behavior
-**Status:** Planned
+**Status:** Implemented in Sprint A
 
 The current dashboard uses the first itinerary day as its default. Eventually the Today view should understand the actual trip date and automatically surface the current day.
 
@@ -55,7 +55,7 @@ Potential behavior:
 **Design constraint:** Do not turn this into a clock-driven task manager. The vacation should still feel relaxed.
 
 ### 2. Better “What’s next?” experience
-**Status:** Planned
+**Status:** Implemented in Sprint A
 
 The dashboard should answer the immediate question:
 
@@ -325,6 +325,14 @@ Before calling the app “Final”:
 ---
 
 ## Change log
+
+### 2026-10-02 · Sprint A → Today + appearance
+
+- Added date-aware pre-trip, in-trip, and post-trip Today states.
+- Added calculated trip progress.
+- Added Now / Next / Later orientation for the current day.
+- Promoted light/dark appearance to a persistent header control.
+- Bumped the service-worker cache version.
 
 ### 2026-10-01 · Beta V0.1 → dashboard prototype
 
