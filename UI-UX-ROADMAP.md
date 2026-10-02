@@ -40,7 +40,7 @@ The design should feel calm, deliberate, and Apple-inspired: strong hierarchy, r
 These are intentionally **not** commitments to build immediately. They are the next ideas to consider when the itinerary itself becomes more settled.
 
 ### 1. True “Today” behavior
-**Status:** Implemented in Sprint A
+**Status:** Implemented in Sprint A; the October 31 completion boundary and local preview clock were refined in the 2026-10-02 design follow-through.
 
 The current dashboard uses the first itinerary day as its default. Eventually the Today view should understand the actual trip date and automatically surface the current day.
 
@@ -55,7 +55,7 @@ Potential behavior:
 **Design constraint:** Do not turn this into a clock-driven task manager. The vacation should still feel relaxed.
 
 ### 2. Better “What’s next?” experience
-**Status:** Implemented in Sprint A
+**Status:** Implemented in Sprint A; event-level pre-trip visibility and cautious “Around now” wording added in the 2026-10-02 design follow-through.
 
 The dashboard should answer the immediate question:
 
@@ -74,7 +74,7 @@ Potential structure:
 **Avoid:** duplicating the same itinerary information in multiple places.
 
 ### 3. Activity cards
-**Status:** Sprint B candidate
+**Status:** Implemented for important anchors in Sprint B. Continue adding richer fields only when existing itinerary data makes them useful.
 
 Consider richer activity details for important anchors:
 
@@ -89,7 +89,7 @@ Consider richer activity details for important anchors:
 **Design constraint:** Only important activities deserve richer cards. Do not turn every line of the itinerary into a mini webpage.
 
 ### 4. Better branching / “Different paths. Same place.”
-**Status:** Partially implemented conceptually
+**Status:** Partially implemented. Family-specific notes appear in Today and day details; shared anchors and reunion points are not yet presented consistently as a visual structure.
 
 The itinerary already contains family-specific notes and the dedicated geocaching day.
 
@@ -115,7 +115,7 @@ Morning
 **Design constraint:** Branching should clarify freedom, not make the trip feel like a project-management diagram.
 
 ### 5. Map / route view
-**Status:** Deferred
+**Status:** Partially implemented. The Map view lists locations and hands off to Maps; a visual island overview remains deferred.
 
 Current Map view intentionally avoids recreating a mapping service.
 
@@ -150,21 +150,23 @@ Potential refinement:
 ## Apple / iOS-inspired polish
 
 ### 7. Replace prototype glyphs with a cohesive icon system
-**Status:** Deferred
+**Status:** Initial cohesive set implemented in the 2026-10-02 design follow-through.
 
-The current navigation uses simple text/glyph icons.
+The header now uses the Home Screen icon, and primary navigation uses a small, consistent inline SVG set. Avoid adding decorative icons beyond the navigation and app mark.
 
-Future version could use a consistent icon set with:
+The current inline SVG set uses:
 
 - Clear selected/unselected states
 - Familiar symbols
 - Appropriate touch targets
 - Consistent optical weight
 
-Avoid decorative icon overload.
+Avoid expanding the set for decoration; revisit optical weight only if device review identifies a problem.
 
 ### 8. Refine typography hierarchy
 **Status:** Partially implemented
+
+The page has a clear dominant title and readable body type, but individual sizes remain ad hoc and status/metadata labels are small.
 
 General text was increased for readability.
 
@@ -332,7 +334,36 @@ Before calling the app “Final”:
 - [x] Refine activity cards around important anchors
 - [x] Make family branching visually clearer without turning it into project management
 
+## Design review · 2026-10-02
+
+See [DESIGN-CRITIQUE-2026-10-02.md](DESIGN-CRITIQUE-2026-10-02.md) for the full review of remote `main` and the deployed PWA.
+
+Follow-ups from the review:
+
+- [x] Make the first Day 1 activity and its time visible in the pre-trip Today card while keeping the trip countdown secondary.
+- [x] Change the in-trip label to “Around now” where event durations are unknown, and show “Up next” before the first timed activity.
+- [x] Align the brand mark and navigation icons; stop the primary Today card from stretching beside the secondary open-items card.
+- When Map work resumes, prototype a simple spatial overview without assuming routes or building custom navigation.
+- Continue the typography, accessibility, device-layout, and offline-readiness passes already listed above.
+
+Already implemented in the reviewed build: date-aware Today states, anchor-focused activity details, family-specific notes, reservation status summaries and links, and the finalized Home Screen icon. The Home Screen icon is not outstanding work.
+
+For visual checks, Today accepts the local-only `previewAt` query parameter (for example, `?previewAt=2026-10-26T09:00`). It is ignored outside localhost and is documented in the README.
+
 ## Change log
+
+### 2026-10-02 · Design critique follow-through
+
+- Put the first Day 1 activity and time on the pre-trip Today card.
+- Made Today’s flow use “Around now” for a time-based event whose duration is unknown, and “Up next” before the first timed event.
+- Added a localhost-only preview clock through `?previewAt=YYYY-MM-DDTHH:mm`; the simulated time is visible in the Today eyebrow.
+- Replaced the header emoji with the Home Screen icon, unified navigation symbols as inline SVGs, and removed excess height from the primary Today card on wide layouts.
+- Made October 31 enter the completed-trip state and corrected the approximate “Afternoon” time parser so it is not mistaken for “Noon.”
+
+### 2026-10-02 · Design review
+
+- Recorded the current Today hierarchy, icon/color alignment, and remaining visual/readiness work in `DESIGN-CRITIQUE-2026-10-02.md`.
+- Clarified which roadmap items are already present and which are follow-up polish; final itinerary/reservation verification and family QA remain dependent on planning decisions and family review.
 
 ### 2026-10-02 · iOS 26 PWA viewport safeguard
 
