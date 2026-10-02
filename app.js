@@ -3,7 +3,7 @@ let DATA=null,state={view:"today"};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 async function load(){const r=await fetch("./itinerary.json");if(!r.ok)throw Error();DATA=await r.json();render();if("serviceWorker"in navigator)navigator.serviceWorker.register("./service-worker.js")}
 function render(){document.querySelectorAll(".nav-item").forEach(b=>b.classList.toggle("active",b.dataset.view===state.view));const a=document.getElementById("app");a.innerHTML=state.view==="today"?today():state.view==="plan"?plan():state.view==="map"?map():more();wire()}
-function tripDates(){return {start:new Date(2026,9,22),end:new Date(2026,9,30)}}
+function tripDates(){return {start:new Date(2026,9,22),end:new Date(2026,9,31)}}
 function dateKey(d){return d.toISOString().slice(0,10)}
 function localDate(){const d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
 function dayForToday(today,start,end){if(today<start)return null;if(today>end)return DATA.days.length;const key=dateKey(today);return DATA.days.findIndex(d=>dateKey(new Date(d.dateLabel+" 2026"))===key)+1}
