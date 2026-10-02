@@ -50,6 +50,8 @@ No web framework, backend, or build system is required.
 
 For local development, serve the repository through a local HTTP server rather than opening `index.html` directly. This allows `fetch("./itinerary.json")`, ES modules, and the service worker to behave normally.
 
+To preview Today at a simulated local date and time, add `?previewAt=YYYY-MM-DDTHH:mm` while running on `localhost`. For example, `?previewAt=2026-10-22T12:00` previews Day 1 around midday, `?previewAt=2026-10-26T09:00` previews Day 5 in the morning, and `?previewAt=2026-10-31T12:00` previews the completed-trip state. The clock uses the browser's local timezone, is ignored outside localhost, and the Today eyebrow shows the preview time. Remove the query parameter to return to the real clock.
+
 The GitHub Pages workflow validates every JavaScript module and the itinerary JSON before deployment.
 
 ### Build and cache versioning

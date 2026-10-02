@@ -1,4 +1,4 @@
-import {esc,tripDates,localDate,dayForToday,progressForToday,dayFlow} from "../utils.js";
+import {esc,tripDates,localDate,dashboardNow,previewTimeLabel,dayForToday,progressForToday,dayFlow} from "../utils.js";
 
 // Shared helpers (imported by the other views so no new files are needed).
 export const s=v=>esc(v==null?"":String(v));
@@ -25,11 +25,12 @@ export function dayRow(d){
 const openRow=r=>'<div class="link-row"><div><strong>'+s(r.name)+'</strong><br><span>'+s(r.action)+'</span></div>'+chip(r.status)+'</div>';
 
 function flowItem(label,x,cls){
-  return '<div class="flow-item'+(cls||"")+'"><span class="flow-label">'+label+'</span><strong>'+s(x.title)+'</strong><span class="subtle">'+s(x.time)+' · '+s(x.detail)+'</span></div>';
+  const meta=[x.time,x.detail].filter(Boolean).join(" · ");
+  return '<div class="flow-item'+(cls||"")+'"><span class="flow-label">'+label+'</span><strong>'+s(x.title)+'</strong>'+(meta?'<span class="subtle">'+s(meta)+'</span>':"")+'</div>';
 }
 
 export function today(data){
-  const {start,end}=tripDates(),now=localDate();
+  const currentTime=dashboardNow(),previewLabel=previewTimeLabel(),{start,end}=tripDates(),now=localDate(currentTime);
   const idx=dayForToday(now,start,end,data),pct=progressForToday(now,start,end);
   const total=data.days.length;
   const pre=idx===null,done=!pre&&idx===total;
@@ -40,17 +41,17 @@ export function today(data){
   // Main card
   let card;
   if(pre){
-    const d=data.days[0];
+    const d=data.days[0],first=d.activities?.[0];
     card='<section class="card now-card"><p class="eyebrow">Trip starts in</p><div class="now-row"><div><h2>'+toGo+'</h2><p class="subtle">'+s(d.dateLabel)+' · Day 1</p></div><span class="day-chip">UPCOMING</span></div>'
-      +'<div class="next-line"><strong>'+s(d.title)+'</strong><span class="subtle">'+s(d.theme)+'</span></div>'
+      +'<div class="next-line"><strong>'+s(first?.title||d.title)+'</strong><span class="subtle">'+s([first?.time,d.theme].filter(Boolean).join(" · "))+'</span></div>'
       +'<div class="action-row"><button class="action" data-day="'+s(d.id)+'">Preview Day 1</button></div></section>';
   }else if(done){
     card='<section class="card now-card"><p class="eyebrow">Trip complete</p><div class="now-row"><div><h2>Kauaʻi 2026</h2><p class="subtle">'+RANGE_LONG+'</p></div><span class="day-chip">COMPLETE</span></div>'
       +'<div class="next-line"><strong>Aloha ʻOe</strong><span class="subtle">The itinerary is complete. The memories are yours.</span></div></section>';
   }else{
-    const f=dayFlow(cur,new Date())||{};
-    const flow=(f.current?flowItem("Now",f.current," current"):"")
-      +(f.next?flowItem("Next",f.next,""):"")
+    const f=dayFlow(cur,currentTime)||{};
+    const flow=(f.current?flowItem("Around now",f.current," current"):"")
+      +(f.next?flowItem(f.current?"Next":"Up next",f.next,""):"")
       +(f.later&&f.later.length?'<div class="flow-item"><span class="flow-label">Later</span><strong>'+f.later.map(x=>s(x.title)).join(" · ")+'</strong></div>':"");
     card='<section class="card now-card"><p class="eyebrow">Today · Day '+s(cur.id)+'</p><div class="now-row"><div><h2>'+s(cur.title)+'</h2><p class="subtle">'+s(cur.theme)+'</p></div><span class="day-chip">'+s(cur.status)+'</span></div>'
       +(flow?'<div class="flow-grid">'+flow+'</div>':"")
@@ -92,6 +93,6 @@ export function today(data){
     ?'<section class="section"><div class="card info-card"><h3>Watch</h3>'+data.watch.map(w=>'<div class="link-row"><div><strong>'+s(w.title)+'</strong><br><span>'+s(w.note)+'</span></div><span class="status-chip">'+s(w.level)+'</span></div>').join("")+'</div></section>'
     :"";
 
-  return '<section class="hero"><p class="eyebrow">'+RANGE_SHORT+'</p><h1>Kauai 2026<br><em>Dashboard</em></h1></section>'
+  return '<section class="hero"><p class="eyebrow">'+s(previewLabel?"Preview · "+previewLabel:RANGE_SHORT)+'</p><h1>Kauai 2026<br><em>Dashboard</em></h1></section>'
     +'<div class="dashboard-grid">'+card+side+'</div>'+paths+upcoming+watch;
 }

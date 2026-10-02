@@ -76,3 +76,12 @@ html.narrow-touch-portrait .nav-mobile{position:relative;top:auto;right:auto;bot
 .nav-desktop{display:none}
 .nav-mobile{display:grid}
 @media(min-width:760px){.nav-desktop{display:flex}.nav-mobile{display:none}}
+
+/* Keep the header mark and navigation in the same visual language as the app icon. */
+.brand-mark{width:27px;height:27px;object-fit:cover;border-radius:7px}
+.nav-icon{display:grid;place-items:center;width:20px;height:20px}
+.nav-icon svg{display:block;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:760px){.nav-icon svg{width:16px;height:16px}}
+
+/* Let the Today card size to its content instead of stretching beside open items. */
+.dashboard-grid{align-items:start}
