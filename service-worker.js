@@ -1,5 +1,5 @@
 const CACHE="kauai-dashboard-__BUILD_SHA__";
-const CORE=["./","./index.html","./styles.css","./js/app.js","./js/data.js","./js/utils.js","./js/views/today.js","./js/views/plan.js","./js/views/day-detail.js","./js/views/map.js","./js/views/more.js","./manifest.json","./icon.svg","./itinerary.json"];
+const CORE=["./","./index.html","./styles.css","./js/app.js","./js/data.js","./js/utils.js","./js/views/today.js","./js/views/plan.js","./js/views/day-detail.js","./js/views/map.js","./js/views/more.js","./manifest.json","./kauai-icon-1024.png","./itinerary.json"];
 const NETWORK_FIRST=["/index.html","/js/app.js","/js/data.js","/js/utils.js","/js/views/today.js","/js/views/plan.js","/js/views/day-detail.js","/js/views/map.js","/js/views/more.js","/itinerary.json"];
 self.addEventListener("install",e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
