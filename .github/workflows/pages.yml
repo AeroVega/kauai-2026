@@ -19,6 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/configure-pages@v6
+      - name: Validate application files
+        run: |
+          node --check app.js
+          python -m json.tool itinerary.json > /dev/null
+      - name: Stamp build and cache version
+        run: |
+          sed -i "s/__BUILD_SHA__/\${GITHUB_SHA}/g" app.js service-worker.js
       - uses: actions/upload-pages-artifact@v5
         with:
           path: "."
