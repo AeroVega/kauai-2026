@@ -1,4 +1,4 @@
-const BUILD="Sprint B · build 0.4.0";
+const BUILD="__BUILD_SHA__";
 const savedTheme=localStorage.getItem("kauai-theme");if(savedTheme==="dark")document.documentElement.dataset.theme="dark";
 let DATA=null,state={view:"today"};
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
