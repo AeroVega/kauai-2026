@@ -183,7 +183,7 @@
       },
       "reservation": {
         "name":"Tidepools at Grand Hyatt Kauai",
-        "detail":"7:00 PM dinner on Oct 29 is booked. Reservation screenshot to be archived when provided.",
+        "detail":"OpenTable confirmation verifies a table for 3 on Thursday Oct 29 at 7:00 PM.",
         "status":"BOOKED",
         "url":"https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
       },
@@ -248,7 +248,7 @@
       "name":"Tidepools at Grand Hyatt Kauai",
       "time":"7:00 PM",
       "status":"BOOKED",
-      "action":"7:00 PM family dinner on Oct 29 confirmed; reservation screenshot to be archived when provided.",
+      "action":"OpenTable confirmation verifies a table for 3 on Thursday Oct 29 at 7:00 PM.",
       "url":"https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
     }
   ],
