@@ -4,7 +4,7 @@ let forced=localStorage.getItem(STORAGE_KEY)==="on";
 const listeners=new Set();
 
 export function isOfflineMode(){
-  return forced||navigator.onLine===false;
+  return forced||(typeof navigator!=="undefined"&&navigator.onLine===false);
 }
 export function isForcedOffline(){
   return forced;
@@ -31,5 +31,4 @@ export function subscribeConnection(listener){
 function notify(){
   listeners.forEach(listener=>listener());
 }
-window.addEventListener("online",notify);
-window.addEventListener("offline",notify);
+if(typeof window!=="undefined"){window.addEventListener("online",notify);window.addEventListener("offline",notify);}
