@@ -26,7 +26,7 @@ function syncNavigation(){
 }
 function focusHeading(){
   const heading=document.querySelector("#app h1");
-  if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true)}
+  if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}
 }
 function scrollAppToTop(){window.scrollTo(0,0);document.querySelector(".layout")?.scrollTo(0,0)}
 function render(focus=false){
