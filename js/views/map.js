@@ -67,5 +67,6 @@ export function initMap(){
   });
 
   if(bounds.length)map.fitBounds(bounds,{padding:[28,28],maxZoom:10});
-  requestAnimationFrame(()=>map.invalidateSize());\n  window.setTimeout(()=>map.invalidateSize(),150);
+  requestAnimationFrame(()=>map.invalidateSize());
+  window.setTimeout(()=>map.invalidateSize(),150);
 }
