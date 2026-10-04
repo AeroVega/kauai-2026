@@ -87,7 +87,7 @@
       "title": "Scenic drive · waterfall day",
       "theme": "Scenery + guided adventure",
       "status": "OPEN",
-      "description": "Scenic drive + verified Da Life Outdoors waterfall adventure. Saturday Oct 24 is now the committed tour day, with Wailua Falls as the scenic lead-in.",
+      "description": "Scenic drive + Da Life Outdoors waterfall adventure. Saturday Oct 24 is the committed tour day, with Wailua Falls as the scenic lead-in.",
       "activities": [
         {
           "time": "Morning",
@@ -97,7 +97,7 @@
         {
           "time": "11:00 AM / 1:00 PM",
           "title": "Bamboo Falls + Papakolea Falls",
-          "detail": "Private-property waterfall swim/hike. Verify Saturday availability before paying.",
+          "detail": "Private-property waterfall swim/hike. Family is committed to the Saturday Oct 24 tour; choose the 11:00 AM or 1:00 PM start when booking.",
           "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
         },
         {
@@ -107,20 +107,51 @@
         }
       ],
       "family": {
-        "Mom": "Review after seeing the map, estimated drive times, and start/end window.",
+        "Mom": "Committed to the Saturday waterfall day; keep the rest of the afternoon spacious.",
         "Connie": "Great landscape + adventure day without turning it into an endurance event.",
         "Brandon": "Can join or use the flexible space."
       },
       "reservation": {
         "name": "Waterfall Swim & Hike — Da Life Outdoors",
-        "detail": "Verified available on Saturday Oct 24. Family plan is to take the Saturday tour; confirm the selected start time when booking.",
+        "detail": "Family has committed to the Saturday Oct 24 tour; confirm the selected 11:00 AM or 1:00 PM start time when booking.",
         "status": "OPEN",
         "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
       },
-      "flex": "If the waterfall tour is unavailable Saturday, move/rebook it to a compatible weekday or redesign around Wailua Falls plus another scenic stop."
+      "flex": "If booking the Saturday tour fails, pause before changing the rest of the itinerary and resolve the operator availability directly."
     },
     {
       "id": 4,
+      "dateLabel": "Sun Oct 25",
+      "title": "Waimea Canyon",
+      "theme": "Big scenery",
+      "status": "CONDITIONAL",
+      "description": "Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.",
+      "activities": [
+        {
+          "time": "Morning",
+          "title": "Head west",
+          "detail": "Make Waimea Canyon the dedicated landscape day."
+        },
+        {
+          "time": "Late morning",
+          "title": "Waimea Canyon viewpoints",
+          "detail": "Exact route and hiking stops deferred until access conditions are known."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Kōkeʻe / west side",
+          "detail": "Conditional on current road and park access."
+        }
+      ],
+      "family": {
+        "Mom": "Review the primary concept before a detailed backup route is built.",
+        "Connie": "This is the big landscape day; prioritize scenery over checking boxes.",
+        "Brandon": "Join the scenic day or enjoy a lighter alternative if desired."
+      },
+      "flex": "West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."
+    },
+    {
+      "id": 5,
       "dateLabel": "Mon Oct 26",
       "title": "Connie’s dedicated geocaching day",
       "theme": "Different paths · same place",
@@ -150,37 +181,6 @@
         "Brandon": "No pre-planned alternative is necessary; freedom is intentional."
       },
       "flex": "If weather or access disrupts the cache plan, turn it into a flexible exploration/beach day rather than forcing the objective."
-    },
-    {
-      "id": 5,
-      "dateLabel": "Sun Oct 25",
-      "title": "Waimea Canyon",
-      "theme": "Big scenery",
-      "status": "CONDITIONAL",
-      "description": "Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.",
-      "activities": [
-        {
-          "time": "Morning",
-          "title": "Head west",
-          "detail": "Make Waimea Canyon the dedicated landscape day."
-        },
-        {
-          "time": "Late morning",
-          "title": "Waimea Canyon viewpoints",
-          "detail": "Exact route and hiking stops deferred until access conditions are known."
-        },
-        {
-          "time": "Afternoon",
-          "title": "Kōkeʻe / west side",
-          "detail": "Conditional on current road and park access."
-        }
-      ],
-      "family": {
-        "Mom": "Review the primary concept before a detailed backup route is built.",
-        "Connie": "This is the big landscape day; prioritize scenery over checking boxes.",
-        "Brandon": "Join the scenic day or enjoy a lighter alternative if desired."
-      },
-      "flex": "West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."
     },
     {
       "id": 6,
@@ -226,12 +226,12 @@
       "title": "Zipline · luau",
       "theme": "Restorative day + shared evening",
       "status": "WORKING",
-      "description": "Active afternoon lead-in followed by the shared evening anchor: Kōloa Zipline from 11:45 AM–2:00 PM, then Smith Family Garden Luau at 5:00 PM.",
+      "description": "Active afternoon lead-in followed by the shared evening anchor: Kōloa Zipline from 11:45 AM–2:00 PM, then straight into getting ready for Smith Family Garden Luau at 5:00 PM.",
       "activities": [
         {
-          "time": "11:30 AM",
+          "time": "11:15 AM",
           "title": "Arrive for Kōloa Zipline",
-          "detail": "Check in 15 minutes before the 11:45 AM tour.",
+          "detail": "Arrive 30 minutes before the 11:45 AM tour start.",
           "url": "https://www.koloazipline.com/"
         },
         {
@@ -243,7 +243,7 @@
         {
           "time": "2:00–4:15 PM",
           "title": "Open afternoon",
-          "detail": "Leave a generous buffer for the drive back toward Wailua, a snack, and a reset before the luau."
+          "detail": "Family plan: finish ziplining, then go straight into getting cleaned up, changed, and ready for the 5:00 PM luau. The three-hour window is intentionally the reset period."
         },
         {
           "time": "5:00 PM",
@@ -264,7 +264,7 @@
       },
       "reservation": {
         "name": "Kōloa Zipline + Smith Family Garden Luau",
-        "detail": "Zipline target: 11:45 AM–2:00 PM. Luau starts at 5:00 PM in October. Confirm both reservations before the trip.",
+        "detail": "Family has accepted the Day 7 pairing: 11:45 AM–2:00 PM Kōloa Zipline, followed by getting ready for the 5:00 PM luau.",
         "status": "OPEN",
         "url": "https://www.koloazipline.com/"
       },
@@ -411,7 +411,7 @@
     {
       "title": "Day 7 timing",
       "level": "WATCH",
-      "note": "Zipline ends at 2:00 PM and the luau begins at 5:00 PM; protect the afternoon buffer for the drive from Kōloa to Wailua and a reset."
+      "note": "Zipline ends at 2:00 PM and the luau begins at 5:00 PM. The family is intentionally using the gap to go straight into getting ready for the luau."
     }
   ],
   "locations": [
