@@ -3,7 +3,7 @@ import {flights,UNITED_URL,flightDateLabel} from "../flights.js";
 import {connectionLabel,connectionDetail,isForcedOffline,isOfflineMode,setForcedOffline,subscribeConnection} from "../offline.js";
 
 const externalLink=(url,label,aria)=>{
-  if(isOfflineMode())return '<span class="out offline-link" title="Unavailable offline" aria-label="'+s(aria)+' — unavailable offline">'+s(label)+' <span class="offline-lock">Offline</span></span>';
+  if(isOfflineMode())return '<span class="out offline-link" title="Unavailable while offline" aria-label="'+s(aria)+' — unavailable while offline"><span class="offline-lock" aria-hidden="true">⌕</span><span>Unavailable</span></span>';
   return '<a class="out" href="'+s(url)+'" aria-label="'+s(aria)+'" target="_blank" rel="noopener">'+s(label)+' '+externalIcon+'</a>';
 };
 
