@@ -94,7 +94,7 @@ Kauaʻi 2026 repository
 
 > **Different paths. Same place.**
 
-The dashboard should support three people having different experiences while preserving shared anchors and reunion points. Keep the app calm and useful; use specialized external services for navigation, geocaching, reservations, weather, and similar jobs. The Map view uses Leaflet with OpenStreetMap tiles for orientation; it is not a replacement for turn-by-turn navigation.
+The dashboard should support three people having different experiences while preserving shared anchors and reunion points. Keep the app calm and useful; use specialized external services for navigation, geocaching, reservations, weather, and similar jobs. The Map view uses Leaflet with OpenStreetMap tiles for orientation; it is not a replacement for turn-by-turn navigation. The Map view uses Leaflet with OpenStreetMap tiles for orientation; it is not a replacement for turn-by-turn navigation.
 
 ## Status
 
