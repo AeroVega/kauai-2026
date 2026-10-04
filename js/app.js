@@ -3,7 +3,8 @@ import {today} from "./views/today.js";
 import {plan} from "./views/plan.js";
 import {openDay} from "./views/day-detail.js";
 import {map,initMap} from "./views/map.js";
-import {more} from "./views/more.js";
+import {more,bindOfflineUI} from "./views/more.js";
+import {subscribeConnection,connectionLabel,isOfflineMode} from "./offline.js";
 
 const BUILD="__BUILD_SHA__";
 const savedTheme=localStorage.getItem("kauai-theme");if(savedTheme==="dark")document.documentElement.dataset.theme="dark";
@@ -11,7 +12,10 @@ function syncThemeColor(){const m=document.getElementById("themeColor");if(m)m.c
 let DATA=null;
 const state={view:"today",day:null};
 let lastMarkup="";
+let unsubscribeOffline=null;
 
+function syncConnectionPill(){const pill=document.getElementById("connectionPill");if(!pill)return;pill.textContent=connectionLabel();pill.classList.toggle("offline",isOfflineMode());}
+const globalConnectionSubscription=subscribeConnection(syncConnectionPill);
 function syncNavigation(){
   document.querySelectorAll(".nav-item").forEach(button=>{
     const active=button.dataset.view===state.view;
@@ -28,11 +32,14 @@ function scrollAppToTop(){window.scrollTo(0,0);document.querySelector(".layout")
 function render(focus=false){
   state.day=null;
   syncThemeColor();
+  syncConnectionPill();
   syncNavigation();
+  if(unsubscribeOffline){unsubscribeOffline();unsubscribeOffline=null}
   lastMarkup=state.view==="today"?today(DATA):state.view==="plan"?plan(DATA):state.view==="map"?map(DATA):more(DATA,BUILD);
   document.getElementById("app").innerHTML=lastMarkup;
   if(state.view==="map")initMap();
   wire();
+  if(state.view==="more")unsubscribeOffline=bindOfflineUI(()=>render(false));
   if(focus){scrollAppToTop();focusHeading()}
 }
 function wire(){
@@ -55,14 +62,23 @@ function wire(){
 }
 function refreshToday(){
   if(!DATA||state.view!=="today"||state.day||document.hidden)return;
-  // Avoid replacing a focused control or redrawing an unchanged page every minute.
   if(document.getElementById("app").contains(document.activeElement)&&document.activeElement.matches("button,a,input,select,textarea"))return;
   if(today(DATA)!==lastMarkup)render();
 }
 window.addEventListener("pageshow",refreshToday);
 document.addEventListener("visibilitychange",refreshToday);
 setInterval(refreshToday,60000);
-function showError(error){console.error(error);const a=document.getElementById("app");if(!a)return;const message=error?.message||String(error||"Unknown error"),stack=error?.stack||"No stack trace was provided by the browser.";a.innerHTML='<div class="empty startup-error" role="alert"><strong>The dashboard could not load.</strong><details><summary>Error details</summary><pre id="appDiagnostics"></pre></details><button class="action" id="reloadApp">Reload</button></div>';const pre=document.getElementById("appDiagnostics");if(pre)pre.textContent="Message: "+message+"\n\nStack:\n"+stack+"\n\nBuild: "+BUILD+"\nURL: "+location.href+"\nTime: "+new Date().toISOString();document.getElementById("reloadApp")?.addEventListener("click",()=>location.reload())}
+function showError(error){
+  console.error(error);
+  const a=document.getElementById("app");
+  if(!a)return;
+  const message=error?.message||String(error||"Unknown error");
+  const stack=error?.stack||"No stack trace was provided by the browser.";
+  a.innerHTML='<div class="empty startup-error" role="alert"><strong>The dashboard could not load.</strong><details><summary>Error details</summary><pre id="appDiagnostics"></pre></details><button class="action" id="reloadApp">Reload</button></div>';
+  const pre=document.getElementById("appDiagnostics");
+  if(pre)pre.textContent="Message: "+message+"\n\nStack:\n"+stack+"\n\nBuild: "+BUILD+"\nURL: "+location.href+"\nTime: "+new Date().toISOString();
+  document.getElementById("reloadApp")?.addEventListener("click",()=>location.reload());
+}
 async function boot(){
   try{DATA=await loadItinerary();render()}catch(error){showError(error);return}
   if("serviceWorker"in navigator){

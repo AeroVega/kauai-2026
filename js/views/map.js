@@ -1,4 +1,5 @@
 import {externalIcon,s} from "./today.js";
+import {isOfflineMode} from "../offline.js";
 
 const kindClass = kind => String(kind||"").toLowerCase().replace(/[^a-z0-9]+/g,"-");
 
@@ -14,10 +15,10 @@ export function map(data){
   const rows=markers.map(l=>{
     const inner='<span class="map-row-number">'+l.number+'</span><span class="day-main"><span class="day-title">'+s(l.name)+'</span><span class="day-sub">'+s(l.note)+'</span>'
       +(l.kind?'<span class="row-tags"><span class="row-tag">'+s(l.kind)+'</span></span>':"")
-      +'</span>'+(l.maps?externalIcon:'');
-    return l.maps
+      +'</span>'+(l.maps&&!isOfflineMode()?externalIcon:'');
+    return l.maps&&!isOfflineMode()
       ?'<a class="day-row loc-row" aria-label="'+s('Directions to '+l.name)+'" href="'+s(l.maps)+'" target="_blank" rel="noopener">'+inner+'</a>'
-      :'<div class="day-row loc-row">'+inner+'</div>';
+      :'<div class="day-row loc-row">'+inner+(l.maps&&isOfflineMode()?'<span class="offline-lock">Offline</span>':"")+'</div>';
   }).join("");
 
   const markerData=JSON.stringify(markers).replace(/</g,"\\u003c");
@@ -32,6 +33,7 @@ export function initMap(){
   const el=document.getElementById("tripMap");
   const dataEl=document.getElementById("mapLocations");
   if(!el||!dataEl)return;
+  if(isOfflineMode()){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable offline</strong><span>The saved location list below is still available.</span></div>';return;}
   if(!window.L){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable</strong><span>The location list below is still available. Connect to the internet to load the map.</span></div>';return;}
   // Give Leaflet a real box before initialization. This avoids iOS PWA viewport
   // quirks causing the map container to collapse to zero height.

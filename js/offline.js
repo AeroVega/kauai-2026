@@ -1,0 +1,35 @@
+const STORAGE_KEY="kauai-offline-mode";
+const storage=typeof localStorage!=="undefined"?localStorage:null;
+
+let forced=storage?.getItem(STORAGE_KEY)==="on";
+const listeners=new Set();
+
+export function isOfflineMode(){
+  return forced||(typeof navigator!=="undefined"&&navigator.onLine===false);
+}
+export function isForcedOffline(){
+  return forced;
+}
+export function setForcedOffline(value){
+  forced=Boolean(value);
+  storage?.setItem(STORAGE_KEY,forced?"on":"off");
+  notify();
+}
+export function connectionLabel(){
+  if(forced)return "Offline mode";
+  return (typeof navigator!=="undefined"&&navigator.onLine===false)?"Offline":"Online";
+}
+export function connectionDetail(){
+  if(forced)return "External links and live services are paused. Your saved itinerary still works.";
+  return navigator.onLine===false
+    ?"Using the saved itinerary. Live services are unavailable until a connection returns."
+    :"Live services available when you open them.";
+}
+export function subscribeConnection(listener){
+  listeners.add(listener);
+  return ()=>listeners.delete(listener);
+}
+function notify(){
+  listeners.forEach(listener=>listener());
+}
+if(typeof window!=="undefined"){window.addEventListener("online",notify);window.addEventListener("offline",notify);}

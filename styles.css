@@ -173,3 +173,17 @@ button{font-family:inherit;cursor:pointer}
 .flight-times{display:flex;align-items:baseline;gap:7px}
 .flight-times strong{font-size:16px}
 .flight-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* Connectivity */
+.connection-banner{padding:14px 16px;border-radius:18px;border:1px solid var(--line);display:flex;align-items:center;gap:12px}
+.connection-banner strong{font-size:15px}
+.connection-banner p{margin:3px 0 0;color:var(--muted);font-size:13px;line-height:1.4}
+.connection-banner.online{background:var(--teal-soft)}
+.connection-banner.offline{background:var(--warn-bg)}
+.connection-banner.offline strong{color:var(--warn-ink)}
+.offline-link{display:inline-flex;align-items:center;gap:6px;opacity:.7;cursor:not-allowed}
+.offline-lock{font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+
+.connection-pill{display:inline-flex;align-items:center;min-height:28px;padding:4px 8px;border-radius:999px;background:var(--teal-soft);color:var(--teal);font-size:11px;font-weight:750;white-space:nowrap}
+.connection-pill.offline{background:var(--warn-bg);color:var(--warn-ink)}
+@media(max-width:520px){.connection-pill{font-size:10px;padding:3px 7px}.brand{gap:7px}.brand>span:first-of-type{max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}}

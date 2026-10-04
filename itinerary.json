@@ -1,7 +1,10 @@
 {
   "trip": {
     "description": "Eight nights on Kauaʻi with three people who enjoy different things for different reasons. The plan is structured enough to make good experiences happen, and loose enough to let the island win.",
-    "base": "Waipouli Beach Resort, Kapaʻa"
+    "base": "Waipouli Beach Resort, Kapaʻa",
+    "timezone": "Pacific/Honolulu",
+    "timezoneLabel": "Kauaʻi time (HST)",
+    "timeNote": "Activity times shown in this itinerary are Hawaiʻi time unless explicitly identified as a flight time. Flight departure/arrival times remain local to each airport."
   },
   "family": {
     "Connie": "Adventurous geocaching, beautiful landscapes, snorkeling, and at least one genuine family core memory. Wants a framework, not a minute-by-minute leash.",
@@ -14,7 +17,7 @@
       "dateLabel": "Thu Oct 22",
       "title": "Arrival · settle in",
       "theme": "Low-pressure start",
-      "status": "WORKING",
+      "status": "ARRIVAL",
       "description": "Līhuʻe Airport → Turo pickup → initial groceries → Waipouli headquarters. Unpack, explore the resort and settle into island time.",
       "activities": [
         {
@@ -50,7 +53,7 @@
       "dateLabel": "Fri Oct 23",
       "title": "Kapaʻa + Keālia coast",
       "theme": "First full day · local + ocean",
-      "status": "WORKING",
+      "status": "FLEXIBLE",
       "description": "Use Kapaʻa as the cultural and immersive anchor, with Keālia Beach as the beach anchor. Snorkeling is the weather/ocean-dependent cherry on top.",
       "activities": [
         {
@@ -124,7 +127,7 @@
       "dateLabel": "Sun Oct 25",
       "title": "Connie’s dedicated geocaching day",
       "theme": "Different paths · same place",
-      "status": "WORKING",
+      "status": "PERSONAL DAY",
       "description": "Connie gets the dedicated geocaching expedition. Brandon may join. Mom may join or default to beach + cocktail time. The geocaching route remains a separate planning thread.",
       "activities": [
         {
@@ -187,7 +190,7 @@
       "dateLabel": "Tue Oct 27",
       "title": "Capt Andy’s BBQ + snorkel · Nāpali Coast",
       "theme": "Snorkeling + scenery",
-      "status": "WORKING",
+      "status": "BOOKED",
       "description": "Capt Andy’s Star Snorkel BBQ Sail is now the family’s selected Day 6 ocean excursion. The afternoon stays intentionally open after the boat.",
       "activities": [
         {
@@ -225,7 +228,7 @@
       "dateLabel": "Wed Oct 28",
       "title": "Zipline · luau",
       "theme": "Restorative day + shared evening",
-      "status": "WORKING",
+      "status": "BOOKED",
       "description": "Active afternoon lead-in followed by the shared evening anchor: Kōloa Zipline from 11:45 AM–2:00 PM, then straight into getting ready for Smith Family Garden Luau at 5:00 PM.",
       "activities": [
         {
@@ -313,7 +316,7 @@
       "dateLabel": "Fri Oct 30",
       "title": "Departure · pressure release",
       "theme": "Slow goodbye",
-      "status": "FLEXIBLE",
+      "status": "DEPARTURE",
       "description": "Checkout at 11:00 AM, stay relatively close to Līhuʻe/airport, eat, take a final swim or nearby stop, return the rental car, and fly home.",
       "activities": [
         {

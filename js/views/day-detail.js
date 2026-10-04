@@ -1,4 +1,5 @@
 import {externalIcon,s,chip} from "./today.js";
+import {isOfflineMode} from "../offline.js";
 
 // Fallback only. Once any activity on a day has "anchor": true/false in the
 // JSON, that day uses the flags and this guess is ignored.
@@ -16,7 +17,7 @@ export function openDay(data,id,onBack,backLabel){
     const a=important(x);
     return '<div class="activity-item'+(a?' activity-anchor':'')+'"><div class="activity-meta"><time>'+s(x.time)+'</time></div>'
       +'<div><h3>'+s(x.title)+'</h3><p>'+s(x.detail)+'</p>'
-      +(x.url?'<div class="action-row"><a class="action secondary" href="'+s(x.url)+'" aria-label="'+s('Open '+x.title)+'" target="_blank" rel="noopener">Open link '+externalIcon+'</a></div>':"")
+      +(x.url?(isOfflineMode()?'<div class="action-row"><span class="action secondary offline-link">Open link <span class="offline-lock">Unavailable offline</span></span></div>':'<div class="action-row"><a class="action secondary" href="'+s(x.url)+'" aria-label="'+s('Open '+x.title)+'" target="_blank" rel="noopener">Open link '+externalIcon+'</a></div>'):"")
       +'</div></div>';
   }).join("");
 
@@ -34,7 +35,7 @@ export function openDay(data,id,onBack,backLabel){
 
   const r=d.reservation;
   const booking=r?'<div class="card detail-section"><h2>Booking</h2><div class="link-row"><div><strong>'+s(r.name)+'</strong><br><span>'+s(r.detail)+'</span></div>'
-    +'<div class="row-actions">'+(r.status?chip(r.status):"")+(r.url?'<a class="out" href="'+s(r.url)+'" aria-label="'+s('Open booking site for '+r.name)+'" target="_blank" rel="noopener">Open '+externalIcon+'</a>':"")+'</div></div></div>':"";
+    +'<div class="row-actions">'+(r.status?chip(r.status):"")+(r.url?(isOfflineMode()?'<span class="out offline-link">Open <span class="offline-lock">Unavailable offline</span></span>':'<a class="out" href="'+s(r.url)+'" aria-label="'+s('Open booking site for '+r.name)+'" target="_blank" rel="noopener">Open '+externalIcon+'</a>'):"")+'</div></div></div>':"";
 
   const prev=data.days[i-1],next=data.days[i+1];
   const nav=(prev||next)?'<div class="day-nav">'
@@ -44,7 +45,7 @@ export function openDay(data,id,onBack,backLabel){
 
   const app=document.getElementById("app");
   app.innerHTML='<section class="detail"><button class="back" id="back">← '+s(backLabel||"Plan")+'</button>'
-    +'<div class="detail-head"><div><p class="eyebrow">Day '+s(d.id)+' · '+s(d.dateLabel)+'</p><h1>'+s(d.title)+'</h1><p class="detail-lede">'+s(d.description)+'</p></div><span class="day-chip">'+s(d.status)+'</span></div>'
+    +'<div class="detail-head"><div><p class="eyebrow">Day '+s(d.id)+' · '+s(d.dateLabel)+' · Kauaʻi time</p><h1>'+s(d.title)+'</h1><p class="detail-lede">'+s(d.description)+'</p></div><span class="day-chip">'+s(d.status)+'</span></div>'
     +'<div class="card detail-section"><div class="activity-list">'+activities+'</div></div>'+paths+booking+nav+'</section>';
 
   document.getElementById("back").onclick=()=>{if(onBack)onBack()};
