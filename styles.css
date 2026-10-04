@@ -136,8 +136,7 @@ button{font-family:inherit;cursor:pointer}
 .trip-map .leaflet-control-zoom a:first-child{border-radius:12px 12px 0 0}
 .trip-map .leaflet-control-zoom a:last-child{border-radius:0 0 12px 12px}
 .trip-map-pin-wrap{background:none;border:0}
-.trip-map-pin{display:grid;place-items:center;width:32px;height:32px;border:3px solid white;border-radius:50% 50% 50% 0;transform:rotate(-45deg);box-shadow:0 3px 10px rgba(23,51,49,.28);font-size:12px;font-weight:800;color:white;background:var(--teal)}
-.trip-map-pin::before{content:"";transform:rotate(45deg)}
+.trip-map-pin{display:grid;place-items:center;width:32px;height:32px;border:3px solid white;border-radius:50%;box-shadow:0 3px 10px rgba(23,51,49,.28);font-size:12px;font-weight:800;color:white;background:var(--teal)}
 .trip-map-pin.home{background:#173331}
 .trip-map-pin.booked{background:var(--teal)}
 .trip-map-pin.food{background:#b66b2b}
