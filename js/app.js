@@ -2,7 +2,7 @@ import {loadItinerary} from "./data.js";
 import {today} from "./views/today.js";
 import {plan} from "./views/plan.js";
 import {openDay} from "./views/day-detail.js";
-import {map} from "./views/map.js";
+import {map,initMap} from "./views/map.js";
 import {more} from "./views/more.js";
 
 const BUILD="__BUILD_SHA__";
@@ -31,6 +31,7 @@ function render(focus=false){
   syncNavigation();
   lastMarkup=state.view==="today"?today(DATA):state.view==="plan"?plan(DATA):state.view==="map"?map(DATA):more(DATA,BUILD);
   document.getElementById("app").innerHTML=lastMarkup;
+  if(state.view==="map")initMap();
   wire();
   if(focus){scrollAppToTop();focusHeading()}
 }
