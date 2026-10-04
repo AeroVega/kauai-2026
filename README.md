@@ -19,7 +19,7 @@ The web app uses structured itinerary data in `itinerary.json`. It does **not** 
 - Dashboard / Today view
 - Full trip / day-by-day itinerary view
 - Day detail views with activities, family considerations, flex plans, and reservation information
-- Map/location view with handoffs to external navigation
+- Accurate interactive Kauaʻi map with OpenStreetMap basemap and external navigation handoffs
 - Reservations and useful external links
 - Family-persona context
 - Persistent light/dark appearance preference
@@ -94,7 +94,7 @@ Kauaʻi 2026 repository
 
 > **Different paths. Same place.**
 
-The dashboard should support three people having different experiences while preserving shared anchors and reunion points. Keep the app calm and useful; use specialized external services for navigation, geocaching, reservations, weather, and similar jobs.
+The dashboard should support three people having different experiences while preserving shared anchors and reunion points. Keep the app calm and useful; use specialized external services for navigation, geocaching, reservations, weather, and similar jobs. The Map view uses Leaflet with OpenStreetMap tiles for orientation; it is not a replacement for turn-by-turn navigation.
 
 ## Status
 
