@@ -17,7 +17,7 @@ export function setForcedOffline(value){
 }
 export function connectionLabel(){
   if(forced)return "Offline mode";
-  return navigator.onLine===false?"Offline":"Online";
+  return (typeof navigator!=="undefined"&&navigator.onLine===false)?"Offline":"Online";
 }
 export function connectionDetail(){
   if(forced)return "External links and live services are paused. Your saved itinerary still works.";
