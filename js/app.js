@@ -4,7 +4,7 @@ import {plan} from "./views/plan.js";
 import {openDay} from "./views/day-detail.js";
 import {map,initMap} from "./views/map.js";
 import {more,bindOfflineUI} from "./views/more.js";
-import {subscribeConnection} from "./offline.js";
+import {subscribeConnection,connectionLabel,isOfflineMode} from "./offline.js";
 
 const BUILD="__BUILD_SHA__";
 const savedTheme=localStorage.getItem("kauai-theme");if(savedTheme==="dark")document.documentElement.dataset.theme="dark";
@@ -14,7 +14,7 @@ const state={view:"today",day:null};
 let lastMarkup="";
 let unsubscribeOffline=null;
 
-function syncNavigation(){
+function syncConnectionPill(){const pill=document.getElementById("connectionPill");if(!pill)return;pill.textContent=connectionLabel();pill.classList.toggle("offline",isOfflineMode());}\nfunction syncNavigation(){
   document.querySelectorAll(".nav-item").forEach(button=>{
     const active=button.dataset.view===state.view;
     button.classList.toggle("active",active);
@@ -30,6 +30,7 @@ function scrollAppToTop(){window.scrollTo(0,0);document.querySelector(".layout")
 function render(focus=false){
   state.day=null;
   syncThemeColor();
+  syncConnectionPill();
   syncNavigation();
   if(unsubscribeOffline){unsubscribeOffline();unsubscribeOffline=null}
   lastMarkup=state.view==="today"?today(DATA):state.view==="plan"?plan(DATA):state.view==="map"?map(DATA):more(DATA,BUILD);
