@@ -81,9 +81,6 @@ function showError(error){
 }
 async function boot(){
   try{DATA=await loadItinerary();render()}catch(error){showError(error);return}
-  if("serviceWorker"in navigator){
-    navigator.serviceWorker.register("./service-worker.js").then(registration=>registration.update()).catch(error=>console.warn("Offline registration unavailable",error));
-  }
 }
 window.addEventListener("unhandledrejection",event=>showError(event.reason));
 boot();
