@@ -14,7 +14,7 @@ const state={view:"today",day:null};
 let lastMarkup="";
 let unsubscribeOffline=null;
 
-function syncConnectionPill(){const pill=document.getElementById("connectionPill");if(!pill)return;pill.textContent=connectionLabel();pill.classList.toggle("offline",isOfflineMode());}\nfunction syncNavigation(){
+function syncConnectionPill(){const pill=document.getElementById("connectionPill");if(!pill)return;pill.textContent=connectionLabel();pill.classList.toggle("offline",isOfflineMode());}\nconst globalConnectionSubscription=subscribeConnection(syncConnectionPill);\nfunction syncNavigation(){
   document.querySelectorAll(".nav-item").forEach(button=>{
     const active=button.dataset.view===state.view;
     button.classList.toggle("active",active);
