@@ -70,3 +70,9 @@ test('conditional days do not claim an activity is happening',()=>{
   const conditional={status:'CONDITIONAL',activities:[{time:'11:00 AM',title:'Potential activity'}]};
   assert.deepEqual(dayFlow(conditional,new Date(2026,9,26,12)),{current:null,next:null,later:[]});
 });
+
+test('unresolved operator choices and access checks do not claim an activity is happening',()=>{
+  for(const status of ['DECISION','MOM CHOICE','VERIFY','HOLD','CONDITIONAL']){
+    assert.deepEqual(dayFlow({status,activities:[{time:'11:00 AM',title:'Potential unresolved activity'}]},new Date(2026,9,26,12)),{current:null,next:null,later:[]});
+  }
+});
