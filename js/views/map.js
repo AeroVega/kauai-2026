@@ -71,7 +71,6 @@ export async function initMap(){
   const currentDataEl=document.getElementById("mapLocations");
   if(!el||!currentDataEl||isOfflineMode())return;
   if(!window.L)return;
-  }
   // Give Leaflet a real box before initialization. This avoids iOS PWA viewport
   // quirks causing the map container to collapse to zero height.
   const mapHeight=Math.max(330,Math.min(620,Math.round((window.visualViewport?.height||window.innerHeight||700)*0.54)));
