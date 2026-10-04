@@ -115,19 +115,18 @@ Morning
 **Design constraint:** Branching should clarify freedom, not make the trip feel like a project-management diagram.
 
 ### 5. Map / route view
-**Status:** Partially implemented. The Map view lists locations and hands off to Maps; a visual island overview remains deferred.
+**Status:** Implemented as a lightweight visual overview using Leaflet + OpenStreetMap tiles.
 
-Current Map view intentionally avoids recreating a mapping service.
+The Map view now combines an accurate island basemap with the key trip locations, numbered markers, concise popups, and one-tap external navigation handoffs. Location coordinates live in `itinerary.json` so the map remains a data view rather than a separate planning system.
 
-Future possibilities:
+Implemented:
+- Visual overview of key trip locations
+- OpenStreetMap basemap with required attribution
+- Numbered location markers and concise popups
+- One-tap directions handoff
+- Responsive map sizing for iPhone/iPad/desktop
 
-- Visual overview of major trip locations
-- Day-specific route
-- Clustered locations
-- One-tap handoff to Apple Maps
-- Optional drive-time context
-
-**Do not build:** turn-by-turn navigation, a custom map engine, or a replacement for Apple Maps.
+**Design constraint:** This is still an orientation map, not a navigation system. Do not add turn-by-turn routing, route optimization, or a custom map engine.
 
 ### 6. Reservations as lightweight records
 **Status:** Existing status, time, site handoff, and action text implemented; confirmation details await bookings.
@@ -343,7 +342,7 @@ Follow-ups from the review:
 - [x] Make the first Day 1 activity and its time visible in the pre-trip Today card while keeping the trip countdown secondary.
 - [x] Change the in-trip label to “Around now” where event durations are unknown, and show “Up next” before the first timed activity.
 - [x] Align the brand mark and navigation icons; stop the primary Today card from stretching beside the secondary open-items card.
-- Keep a Map overview deferred unless family use shows the existing location list is insufficient.
+- [x] Replace the Map location-only list with a lightweight accurate island overview once the family confirmed the list was insufficient.
 - Continue the typography, accessibility, device-layout, and offline-readiness passes already listed above.
 
 Already implemented in the reviewed build: date-aware Today states, anchor-focused activity details, family-specific notes, reservation status summaries and links, and the finalized Home Screen icon. The Home Screen icon is not outstanding work.
@@ -368,6 +367,12 @@ For visual checks, Today accepts the local-only `previewAt` query parameter (for
 Final itinerary, bookings, confirmed reunion/anchor data, and final-trip family QA remain in the final readiness checklist. Local browser checks do not mark physical-device checks complete.
 
 ## Change log
+
+### 2026-10-03 · Visual map overview
+
+- Replaced the Map-only location list with a responsive Leaflet/OpenStreetMap overview.
+- Added verified coordinates for the trip's key destinations and meeting points, plus Lava Lava Beach Club as an unscheduled nearby dining option.
+- Kept the map intentionally lightweight: no routing engine, route optimization, or custom basemap.
 
 ### 2026-10-02 · Pre-approval usability and reliability pass
 
