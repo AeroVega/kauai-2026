@@ -113,8 +113,8 @@
       },
       "reservation": {
         "name": "Waterfall Swim & Hike — Da Life Outdoors",
-        "detail": "Family has committed to the Saturday Oct 24 tour; confirm the selected 11:00 AM or 1:00 PM start time when booking.",
-        "status": "OPEN",
+        "detail": "Saturday Oct 24 reservation confirmed; exact 11:00 AM vs 1:00 PM start is not visible in the charge alert.",
+        "status": "BOOKED",
         "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
       },
       "flex": "If booking the Saturday tour fails, pause before changing the rest of the itinerary and resolve the operator availability directly."
@@ -193,7 +193,7 @@
         {
           "time": "7:15 AM",
           "title": "Capt Andy’s check-in",
-          "detail": "Selected family plan: 5.5-hour Star Snorkel BBQ Sail with snorkeling, breakfast, and BBQ lunch.",
+          "detail": "Confirmed family plan: 5.5-hour Star Snorkel BBQ Sail with snorkeling, breakfast, and BBQ lunch.",
           "url": "https://www.napali.com/star/snorkel/"
         },
         {
@@ -214,8 +214,8 @@
       },
       "reservation": {
         "name": "Capt Andy’s Star Snorkel BBQ Sail",
-        "detail": "Family has selected Capt Andy’s for Day 6. Confirm the final reservation and check-in instructions before departure.",
-        "status": "OPEN",
+        "detail": "Charge alert confirms the Capt Andy’s Sailing reservation.",
+        "status": "BOOKED",
         "url": "https://www.napali.com/star/snorkel/"
       },
       "flex": "If ocean conditions are unsafe, accept the operator’s cancellation/reschedule decision and use a low-key backup rather than scrambling."
@@ -237,7 +237,7 @@
         {
           "time": "11:45 AM–2:00 PM",
           "title": "Kōloa Zipline",
-          "detail": "Reduced 4-line tour. Reservation target is 11:45 AM–2:00 PM.",
+          "detail": "Reduced 4-line tour. Reservation confirmed.",
           "url": "https://www.koloazipline.com/"
         },
         {
@@ -350,32 +350,32 @@
       "day": 3,
       "name": "Waterfall Swim & Hike — Da Life Outdoors",
       "time": "Saturday Oct 24 · 11:00 AM / 1:00 PM options",
-      "status": "OPEN",
-      "action": "Book the Saturday tour; confirm selected start time",
+      "status": "BOOKED",
+      "action": "Saturday Oct 24 reservation confirmed; exact 11:00 AM vs 1:00 PM start is not visible in the charge alert.",
       "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
     },
     {
       "day": 6,
       "name": "Capt Andy’s Star Snorkel BBQ Sail",
       "time": "7:15 AM",
-      "status": "OPEN",
-      "action": "Book/confirm the selected boat day",
+      "status": "BOOKED",
+      "action": "Charge alert confirms the Capt Andy’s Sailing reservation.",
       "url": "https://www.napali.com/star/snorkel/"
     },
     {
       "day": 7,
       "name": "Kōloa Zipline — reduced 4-line tour",
       "time": "11:45 AM–2:00 PM",
-      "status": "OPEN",
-      "action": "Reserve the 11:45 AM tour",
+      "status": "BOOKED",
+      "action": "Charge alert confirms the Kōloa Zipline reservation.",
       "url": "https://www.koloazipline.com/"
     },
     {
       "day": 7,
       "name": "Smith Family Garden Luau",
       "time": "5:00 PM",
-      "status": "OPEN",
-      "action": "Book after confirming the family plan",
+      "status": "BOOKED",
+      "action": "Smiths Kauai charge alert confirms the luau reservation.",
       "url": "https://www.smithskauai.com/garden-luau/"
     },
     {
