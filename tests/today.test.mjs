@@ -66,8 +66,7 @@ test('untimed and alternative activities do not become scheduled next steps',()=
   assert.deepEqual(dayFlow({activities:[]},new Date()),{current:null,next:null,later:[]});
 });
 
-test('unresolved operator choices and access checks do not claim an activity is happening',()=>{
-  for(const day of [data.days[2],data.days[3],data.days[5]]){
-    assert.deepEqual(dayFlow(day,new Date(2026,9,22,12)),{current:null,next:null,later:[]});
-  }
+test('unresolved operator choices do not claim an activity is happening',()=>{
+  // Day 3 and Day 6 are now booked; Day 4 remains intentionally flexible.
+  assert.deepEqual(dayFlow(data.days[3],new Date(2026,9,22,12)),{current:null,next:null,later:[]});
 });
