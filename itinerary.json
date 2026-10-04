@@ -1,42 +1,543 @@
 {
-"trip":{"description":"Eight nights on Kauaʻi with three people who enjoy different things for different reasons. The plan is structured enough to make good experiences happen, and loose enough to let the island win.","base":"Waipouli Beach Resort, Kapaʻa"},
-"family":{"Connie":"Adventurous geocaching, beautiful landscapes, snorkeling, and at least one genuine family core memory. Wants a framework, not a minute-by-minute leash.","Mom":"Relaxation first. Loves experiences, water, good food, scenic drives, a luau, and time at the resort.","Brandon":"Freedom is intentional. He can join the shared plan or peel off for his own interests, then reconnect with the family later."},
-"days":[
-{"id":1,"dateLabel":"Thu Oct 22","title":"Arrival · settle in","theme":"Low-pressure start","status":"WORKING","description":"Līhuʻe Airport → Turo pickup → initial groceries → Waipouli headquarters. Unpack, explore the resort and settle into island time.","activities":[{"time":"11:50 AM","title":"Arrive in Līhuʻe","detail":"Keep the first afternoon intentionally light."},{"time":"12:30 PM","title":"Turo pickup + Target","detail":"Pick up the vehicle and do the initial grocery haul near the airport."},{"time":"Afternoon","title":"Waipouli Beach Resort","detail":"Check in, unpack, explore the resort and immediate surroundings."},{"time":"Evening","title":"Easy dinner","detail":"No major commitment. Let the trip begin without a schedule."}],"family":{"Mom":"Low-pressure arrival day; do not add a major activity.","Connie":"Settle in and orient yourself without immediately optimizing the whole island.","Brandon":"Easy landing; no required agenda."},"flex":"If travel runs late, skip exploration and go straight to headquarters. Safeway across the street can handle later grocery top-ups."},
-{"id":2,"dateLabel":"Fri Oct 23","title":"Kapaʻa + Keālia coast","theme":"First full day · local + ocean","status":"WORKING","description":"Use Kapaʻa as the cultural and immersive anchor, with Keālia Beach as the beach anchor. Snorkeling is the weather/ocean-dependent cherry on top.","activities":[{"time":"Morning","title":"Kapaʻa wandering","detail":"Local food, shops, markets, coastline, and character. No rigid timed excursion."},{"time":"Midday","title":"Eat somewhere that feels local","detail":"Leave enough time to stop, browse, and choose rather than chase a reservation."},{"time":"Afternoon","title":"Keālia Beach","detail":"Beach time and coastline. Snorkeling only if conditions cooperate."},{"time":"Evening","title":"Sunset / easy dinner","detail":"Keep the evening open."}],"family":{"Mom":"Relaxation and local atmosphere without an early alarm.","Connie":"Explore Kapaʻa and see where the day leads.","Brandon":"Freedom to wander or join the family."},"flex":"Poor snorkeling does not break the day. Poor beach weather shifts emphasis to Kapaʻa and other sheltered options."},
-{"id":3,"dateLabel":"Sat Oct 24","title":"Scenic drive · waterfall day","theme":"Scenery + guided adventure","status":"VERIFY","description":"Baseline route: Waipouli → Wailua Falls → private-property Bamboo Falls + Papakolea Falls swim/hike → return toward Kapaʻa/Waipouli. Zipline remains optional.","activities":[{"time":"Morning","title":"Wailua Falls","detail":"Scenic stop before the guided waterfall experience."},{"time":"11:00 AM / 1:00 PM","title":"Bamboo Falls + Papakolea Falls","detail":"Private-property waterfall swim/hike. Verify Saturday availability before paying.","url":"https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"},{"time":"Late afternoon","title":"Return toward Kapaʻa","detail":"Leave breathing room. Do not automatically stack another major activity."},{"time":"Optional","title":"Kōloa Zipline","detail":"Only if the family explicitly wants more. It is deliberately not baseline.","url":"https://www.koloazipline.com/"}],"family":{"Mom":"Review after seeing the map, estimated drive times, and start/end window.","Connie":"Great landscape + adventure day without turning it into an endurance event.","Brandon":"Can join or use the flexible space."},"reservation":{"name":"Waterfall Swim & Hike","detail":"Da Life Outdoors; current operator page says Mon/Wed/Fri while another listing conflicts. Verify Oct 24 directly.","status":"VERIFY","url":"https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"},"flex":"If the waterfall tour is unavailable Saturday, move/rebook it to a compatible weekday or redesign around Wailua Falls plus another scenic stop."},
-{"id":4,"dateLabel":"Sun Oct 25","title":"Waimea Canyon","theme":"Big scenery","status":"CONDITIONAL","description":"Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.","activities":[{"time":"Morning","title":"Head west","detail":"Make Waimea Canyon the dedicated landscape day."},{"time":"Late morning","title":"Waimea Canyon viewpoints","detail":"Exact route and hiking stops deferred until access conditions are known."},{"time":"Afternoon","title":"Kōkeʻe / west side","detail":"Conditional on current road and park access."}],"family":{"Mom":"Review the primary concept before a detailed backup route is built.","Connie":"This is the big landscape day; prioritize scenery over checking boxes.","Brandon":"Join the scenic day or enjoy a lighter alternative if desired."},"flex":"West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."},
-{"id":5,"dateLabel":"Mon Oct 26","title":"Connie’s dedicated geocaching day","theme":"Different paths · same place","status":"WORKING","description":"Connie gets the dedicated geocaching expedition. Brandon may join. Mom may join or default to beach + cocktail time. The geocaching route remains a separate planning thread.","activities":[{"time":"Morning → afternoon","title":"Geocaching expedition","detail":"Use Geocaching.com for the actual cache route. Let the caches take Connie somewhere she otherwise might not have gone.","url":"https://www.geocaching.com/"},{"time":"Anytime","title":"Mom’s resort day","detail":"Beach, pool, cocktail, book, or whatever relaxation sounds good."},{"time":"Evening","title":"Reunite","detail":"Shared dinner or sunset. Different paths, same place."}],"family":{"Mom":"Default plan is beach + cocktail time if she does not join.","Connie":"Adventure day. Do not over-plan the cache route inside the vacation dashboard.","Brandon":"No pre-planned alternative is necessary; freedom is intentional."},"flex":"If weather or access disrupts the cache plan, turn it into a flexible exploration/beach day rather than forcing the objective."},
-{"id":6,"dateLabel":"Tue Oct 27","title":"Big ocean day · Nāpali Coast","theme":"Snorkeling + scenery","status":"DECISION","description":"Present Mom with two reservation paths and let her choose. Either boat option intentionally leaves the late afternoon and dinner easy.","activities":[{"time":"6:45 AM","title":"Holoholo check-in","detail":"5-hour Nāpali Coast snorkel/sightseeing option; use only if operations have resumed and Mom chooses it.","url":"https://holoholocharters.com/tour/napali-coast-snorkel-excursion/"},{"time":"7:15 AM","title":"Capt Andy’s check-in","detail":"5.5-hour Star Snorkel BBQ Sail with snorkeling, breakfast, and BBQ lunch; use if Mom chooses this option.","url":"https://www.napali.com/star/snorkel/"},{"time":"~1:30 PM","title":"Back on land","detail":"The rest of the day stays deliberately unscheduled."},{"time":"Evening","title":"Easy dinner","detail":"No second major activity."}],"family":{"Mom":"Compare comfort, timing, food, snorkeling, and current operational status.","Connie":"Ocean + landscape day with room to enjoy it.","Brandon":"Optional joiner; the afternoon remains open."},"reservation":{"name":"Choose a Nāpali boat","detail":"Capt Andy’s or Holoholo. Verify operational status close to departure and let the captain/operator make safety decisions.","status":"MOM CHOICE","url":"https://www.napali.com/star/snorkel/"},"flex":"If ocean conditions are unsafe, accept the operator’s cancellation/reschedule decision and use a low-key backup rather than scrambling."},
-{"id":7,"dateLabel":"Wed Oct 28","title":"Island time · luau","theme":"Restorative day + shared evening","status":"WORKING","description":"Slow morning, pool, beach, condo time, then Smith Family Garden Luau as the evening anchor.","activities":[{"time":"Morning → afternoon","title":"Do almost nothing","detail":"This is deliberate. Recover from the active run of days."},{"time":"5:00 PM","title":"Smith Family Garden Luau","detail":"October schedule currently lists a 5:00 PM start; confirm final time at booking.","url":"https://www.smithskauai.com/garden-luau/"},{"time":"Evening","title":"Family evening","detail":"Let the luau be the shared memory; no afterparty itinerary required."}],"family":{"Mom":"This should feel like permission to relax until the luau.","Connie":"Enjoy the cultural experience without turning it into research homework.","Brandon":"Easy day; join the family anchor."},"reservation":{"name":"Smith Family Garden Luau","detail":"Reservation required/strongly recommended; confirm final event time at booking.","status":"OPEN","url":"https://www.smithskauai.com/garden-luau/"},"flex":"If the luau is unavailable, preserve the slow day and substitute a relaxed local dinner + sunset/family evening."},
-{"id":8,"dateLabel":"Thu Oct 29","title":"Island time + family dinner","theme":"Flexible final full day","status":"WORKING","description":"Sleep in, beach/pool, revisit a favorite place, or let the family choose spontaneously. Evening anchor is the planned nicer family dinner.","activities":[{"time":"Morning → afternoon","title":"Choose-your-own island time","detail":"No required activity. Revisit a favorite place or stay at the resort."},{"time":"~5:00–5:30 PM","title":"The Beach House Restaurant","detail":"Planned nicer family dinner in Kōloa/Poʻipū. The point is a special shared meal near sunset.","url":"https://www.the-beach-house.com/book/"},{"time":"~6:02 PM","title":"Sunset window","detail":"Līhuʻe sunset is approximately 6:02 PM on Oct 29; check actual local conditions."}],"family":{"Mom":"Review whether The Beach House feels like the right final-night family dinner.","Connie":"Leave the daytime loose and protect the shared dinner as the memory anchor.","Brandon":"Flexible daytime; family dinner is the reunion point."},"reservation":{"name":"Dinner at The Beach House","detail":"Dinner 4:45–9:00 PM nightly; reservations recommended. Target an early sunset-adjacent time if available.","status":"OPEN","url":"https://www.the-beach-house.com/book/"},"flex":"If dinner is unavailable, choose another special family dinner closer to headquarters and keep the day relaxed."},
-{"id":9,"dateLabel":"Fri Oct 30","title":"Departure · pressure release","theme":"Slow goodbye","status":"FLEXIBLE","description":"Checkout at 11:00 AM, stay relatively close to Līhuʻe/airport, eat, take a final swim or nearby stop, return the rental car, and fly home.","activities":[{"time":"11:00 AM","title":"Checkout","detail":"Leave Waipouli and keep the remaining day geographically simple."},{"time":"Afternoon","title":"Final island time","detail":"Slow breakfast, final swim or nearby activity, lunch. No ambitious cross-island mission."},{"time":"TBD","title":"Turo return","detail":"Exact car-return timing still needs confirmation."},{"time":"10:59 PM","title":"Flight home","detail":"Build generous airport margin rather than squeezing in one last attraction."}],"family":{"Mom":"No detailed planning needed yet; first confirm Turo return timing.","Connie":"Pressure-release day. The vacation does not need one final boss battle.","Brandon":"Keep the last day easy and flexible."},"flex":"A cancelled earlier activity can spill here only if it stays comfortably compatible with checkout, car return, and airport timing."}
-],
-"reservations":[
-{"day":3,"name":"Waterfall Swim & Hike — Da Life Outdoors","time":"11:00 AM / 1:00 PM","status":"VERIFY","action":"Verify Oct 24 Saturday availability","url":"https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"},
-{"day":6,"name":"Capt Andy’s Star Snorkel BBQ Sail","time":"7:15 AM","status":"MOM CHOICE","action":"Compare with Holoholo","url":"https://www.napali.com/star/snorkel/"},
-{"day":6,"name":"Holoholo Nāpali Coast Snorkel","time":"6:45 AM","status":"MOM CHOICE","action":"Verify operations have resumed","url":"https://holoholocharters.com/tour/napali-coast-snorkel-excursion/"},
-{"day":7,"name":"Smith Family Garden Luau","time":"~5:00 PM","status":"OPEN","action":"Book after Mom approves","url":"https://www.smithskauai.com/garden-luau/"},
-{"day":8,"name":"The Beach House Restaurant","time":"~5:00–5:30 PM","status":"OPEN","action":"Book sunset-adjacent dinner","url":"https://www.the-beach-house.com/book/"},
-{"day":3,"name":"Kōloa Zipline","time":"TBD","status":"HOLD","action":"Only research if family explicitly wants it","url":"https://www.koloazipline.com/"}
-],
-"watch":[
-{"title":"Kōkeʻe / west-side access","level":"HIGH WATCH","note":"Day 4 depends on current access and recovery conditions."},
-{"title":"Ocean conditions","level":"WATCH","note":"Snorkeling and Nāpali boat plans depend on daily conditions."},
-{"title":"October rain","level":"WATCH","note":"Weather can change quickly; keep outdoor plans flexible."},
-{"title":"Trail hazards","level":"HIGH WATCH","note":"Do not improvise around closures or damaged infrastructure."}
-],
-"locations":[
-{"kind":"HOME","name":"Waipouli Beach Resort","note":"Trip headquarters","maps":"https://www.google.com/maps/search/?api=1&query=Waipouli+Beach+Resort"},
-{"kind":"EAST","name":"Kapaʻa","note":"Local culture, food, wandering, coastline","maps":"https://www.google.com/maps/search/?api=1&query=Kapa%27a+Kauai"},
-{"kind":"EAST","name":"Wailua Falls","note":"Scenic stop on Day 3","maps":"https://www.google.com/maps/search/?api=1&query=Wailua+Falls+Kauai"},
-{"kind":"WEST","name":"Waimea Canyon","note":"Primary landscape destination; access dependent","maps":"https://www.google.com/maps/search/?api=1&query=Waimea+Canyon+Kauai"},
-{"kind":"SOUTH","name":"The Beach House Restaurant","note":"Planned nicer family dinner","maps":"https://www.google.com/maps/search/?api=1&query=The+Beach+House+Restaurant+Poipu+Kauai"}
-],
-"links":[
-{"name":"Geocaching.com","note":"Actual cache hunting for Day 5","url":"https://www.geocaching.com/"},
-{"name":"Hawaiʻi DLNR — Kauaʻi parks","note":"Official park/access status","url":"https://dlnr.hawaii.gov/dsp/parks/kauai/"},
-{"name":"NWS Honolulu","note":"Weather and official warnings","url":"https://www.weather.gov/hfo/"},
-{"name":"Safeway","note":"Later grocery top-up","url":"https://www.safeway.com/"}
-]
+  "trip": {
+    "description": "Eight nights on Kauaʻi with three people who enjoy different things for different reasons. The plan is structured enough to make good experiences happen, and loose enough to let the island win.",
+    "base": "Waipouli Beach Resort, Kapaʻa"
+  },
+  "family": {
+    "Connie": "Adventurous geocaching, beautiful landscapes, snorkeling, and at least one genuine family core memory. Wants a framework, not a minute-by-minute leash.",
+    "Mom": "Relaxation first. Loves experiences, water, good food, scenic drives, a luau, and time at the resort.",
+    "Brandon": "Freedom is intentional. He can join the shared plan or peel off for his own interests, then reconnect with the family later."
+  },
+  "days": [
+    {
+      "id": 1,
+      "dateLabel": "Thu Oct 22",
+      "title": "Arrival · settle in",
+      "theme": "Low-pressure start",
+      "status": "WORKING",
+      "description": "Līhuʻe Airport → Turo pickup → initial groceries → Waipouli headquarters. Unpack, explore the resort and settle into island time.",
+      "activities": [
+        {
+          "time": "11:50 AM",
+          "title": "Arrive in Līhuʻe",
+          "detail": "Keep the first afternoon intentionally light."
+        },
+        {
+          "time": "12:30 PM",
+          "title": "Turo pickup + Target",
+          "detail": "Pick up the vehicle and do the initial grocery haul near the airport."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Waipouli Beach Resort",
+          "detail": "Check in, unpack, explore the resort and immediate surroundings."
+        },
+        {
+          "time": "Evening",
+          "title": "Easy dinner",
+          "detail": "No major commitment. Let the trip begin without a schedule."
+        }
+      ],
+      "family": {
+        "Mom": "Low-pressure arrival day; do not add a major activity.",
+        "Connie": "Settle in and orient yourself without immediately optimizing the whole island.",
+        "Brandon": "Easy landing; no required agenda."
+      },
+      "flex": "If travel runs late, skip exploration and go straight to headquarters. Safeway across the street can handle later grocery top-ups."
+    },
+    {
+      "id": 2,
+      "dateLabel": "Fri Oct 23",
+      "title": "Kapaʻa + Keālia coast",
+      "theme": "First full day · local + ocean",
+      "status": "WORKING",
+      "description": "Use Kapaʻa as the cultural and immersive anchor, with Keālia Beach as the beach anchor. Snorkeling is the weather/ocean-dependent cherry on top.",
+      "activities": [
+        {
+          "time": "Morning",
+          "title": "Kapaʻa wandering",
+          "detail": "Local food, shops, markets, coastline, and character. No rigid timed excursion."
+        },
+        {
+          "time": "Midday",
+          "title": "Eat somewhere that feels local",
+          "detail": "Leave enough time to stop, browse, and choose rather than chase a reservation."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Keālia Beach",
+          "detail": "Beach time and coastline. Snorkeling only if conditions cooperate."
+        },
+        {
+          "time": "Evening",
+          "title": "Sunset / easy dinner",
+          "detail": "Keep the evening open."
+        }
+      ],
+      "family": {
+        "Mom": "Relaxation and local atmosphere without an early alarm.",
+        "Connie": "Explore Kapaʻa and see where the day leads.",
+        "Brandon": "Freedom to wander or join the family."
+      },
+      "flex": "Poor snorkeling does not break the day. Poor beach weather shifts emphasis to Kapaʻa and other sheltered options."
+    },
+    {
+      "id": 3,
+      "dateLabel": "Sat Oct 24",
+      "title": "Scenic drive · waterfall day",
+      "theme": "Scenery + guided adventure",
+      "status": "BOOKED",
+      "description": "Scenic drive + Da Life Outdoors waterfall adventure. The Saturday Oct 24 tour is booked for the 11:00 AM start, with Wailua Falls as the scenic lead-in.",
+      "activities": [
+        {
+          "time": "Morning",
+          "title": "Wailua Falls",
+          "detail": "Scenic stop before the guided waterfall experience."
+        },
+        {
+          "time": "11:00 AM",
+          "title": "Bamboo Falls + Papakolea Falls",
+          "detail": "Private-property waterfall swim/hike. Saturday Oct 24 at 11:00 AM is booked.",
+          "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
+        },
+        {
+          "time": "Late afternoon",
+          "title": "Return toward Kapaʻa",
+          "detail": "Leave breathing room. Do not automatically stack another major activity."
+        }
+      ],
+      "family": {
+        "Mom": "Committed to the Saturday waterfall day; keep the rest of the afternoon spacious.",
+        "Connie": "Great landscape + adventure day without turning it into an endurance event.",
+        "Brandon": "Can join or use the flexible space."
+      },
+      "reservation": {
+        "name": "Waterfall Swim & Hike — Da Life Outdoors",
+        "detail": "Saturday Oct 24 at 11:00 AM confirmed.",
+        "status": "BOOKED",
+        "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
+      },
+      "flex": "If weather or operator conditions disrupt the tour, follow the operator's guidance and keep the afternoon flexible."
+    },
+    {
+      "id": 4,
+      "dateLabel": "Sun Oct 25",
+      "title": "Connie’s dedicated geocaching day",
+      "theme": "Different paths · same place",
+      "status": "WORKING",
+      "description": "Connie gets the dedicated geocaching expedition. Brandon may join. Mom may join or default to beach + cocktail time. The geocaching route remains a separate planning thread.",
+      "activities": [
+        {
+          "time": "Morning → afternoon",
+          "title": "Geocaching expedition",
+          "detail": "Use Geocaching.com for the actual cache route. Let the caches take Connie somewhere she otherwise might not have gone.",
+          "url": "https://www.geocaching.com/"
+        },
+        {
+          "time": "Anytime",
+          "title": "Mom’s resort day",
+          "detail": "Beach, pool, cocktail, book, or whatever relaxation sounds good."
+        },
+        {
+          "time": "Evening",
+          "title": "Reunite",
+          "detail": "Shared dinner or sunset. Different paths, same place."
+        }
+      ],
+      "family": {
+        "Mom": "Default plan is beach + cocktail time if she does not join.",
+        "Connie": "Adventure day. Do not over-plan the cache route inside the vacation dashboard.",
+        "Brandon": "No pre-planned alternative is necessary; freedom is intentional."
+      },
+      "flex": "If weather or access disrupts the cache plan, turn it into a flexible exploration/beach day rather than forcing the objective."
+    },
+    {
+      "id": 5,
+      "dateLabel": "Mon Oct 26",
+      "title": "Waimea Canyon",
+      "theme": "Big scenery",
+      "status": "CONDITIONAL",
+      "description": "Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.",
+      "activities": [
+        {
+          "time": "Morning",
+          "title": "Head west",
+          "detail": "Make Waimea Canyon the dedicated landscape day."
+        },
+        {
+          "time": "Late morning",
+          "title": "Waimea Canyon viewpoints",
+          "detail": "Exact route and hiking stops deferred until access conditions are known."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Kōkeʻe / west side",
+          "detail": "Conditional on current road and park access."
+        }
+      ],
+      "family": {
+        "Mom": "Review the primary concept before a detailed backup route is built.",
+        "Connie": "This is the big landscape day; prioritize scenery over checking boxes.",
+        "Brandon": "Join the scenic day or enjoy a lighter alternative if desired."
+      },
+      "flex": "West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."
+    },
+    {
+      "id": 6,
+      "dateLabel": "Tue Oct 27",
+      "title": "Capt Andy’s BBQ + snorkel · Nāpali Coast",
+      "theme": "Snorkeling + scenery",
+      "status": "WORKING",
+      "description": "Capt Andy’s Star Snorkel BBQ Sail is now the family’s selected Day 6 ocean excursion. The afternoon stays intentionally open after the boat.",
+      "activities": [
+        {
+          "time": "7:15 AM",
+          "title": "Capt Andy’s check-in",
+          "detail": "Confirmed family plan: 5.5-hour Star Snorkel BBQ Sail with snorkeling, breakfast, and BBQ lunch.",
+          "url": "https://www.napali.com/star/snorkel/"
+        },
+        {
+          "time": "~1:30 PM",
+          "title": "Back on land",
+          "detail": "The rest of the day stays deliberately unscheduled."
+        },
+        {
+          "time": "Evening",
+          "title": "Easy dinner",
+          "detail": "No second major activity."
+        }
+      ],
+      "family": {
+        "Mom": "Capt Andy’s is the selected boat day. Relax and enjoy the snorkeling, scenery, and BBQ without adding another major activity afterward.",
+        "Connie": "Ocean + landscape day with room to enjoy it.",
+        "Brandon": "Optional joiner; the afternoon remains open."
+      },
+      "reservation": {
+        "name": "Capt Andy’s Star Snorkel BBQ Sail",
+        "detail": "Charge alert confirms the Capt Andy’s Sailing reservation.",
+        "status": "BOOKED",
+        "url": "https://www.napali.com/star/snorkel/"
+      },
+      "flex": "If ocean conditions are unsafe, accept the operator’s cancellation/reschedule decision and use a low-key backup rather than scrambling."
+    },
+    {
+      "id": 7,
+      "dateLabel": "Wed Oct 28",
+      "title": "Zipline · luau",
+      "theme": "Restorative day + shared evening",
+      "status": "WORKING",
+      "description": "Active afternoon lead-in followed by the shared evening anchor: Kōloa Zipline from 11:45 AM–2:00 PM, then straight into getting ready for Smith Family Garden Luau at 5:00 PM.",
+      "activities": [
+        {
+          "time": "11:15 AM",
+          "title": "Arrive for Kōloa Zipline",
+          "detail": "Arrive 30 minutes before the 11:45 AM tour start.",
+          "url": "https://www.koloazipline.com/"
+        },
+        {
+          "time": "11:45 AM–2:00 PM",
+          "title": "Kōloa Zipline",
+          "detail": "Reduced 4-line tour. Reservation confirmed.",
+          "url": "https://www.koloazipline.com/"
+        },
+        {
+          "time": "2:00–4:15 PM",
+          "title": "Open afternoon",
+          "detail": "Family plan: finish ziplining, then go straight into getting cleaned up, changed, and ready for the 5:00 PM luau. The three-hour window is intentionally the reset period."
+        },
+        {
+          "time": "5:00 PM",
+          "title": "Smith Family Garden Luau",
+          "detail": "October schedule starts at 5:00 PM. Arrive with time to enter the gardens before the 6:00 PM imu ceremony.",
+          "url": "https://www.smithskauai.com/garden-luau/"
+        },
+        {
+          "time": "Evening",
+          "title": "Family evening",
+          "detail": "Let the luau be the shared memory; no afterparty itinerary required."
+        }
+      ],
+      "family": {
+        "Mom": "This should feel like permission to relax until the luau.",
+        "Connie": "Enjoy the cultural experience without turning it into research homework.",
+        "Brandon": "Easy day; join the family anchor."
+      },
+      "reservation": {
+        "name": "Kōloa Zipline + Smith Family Garden Luau",
+        "detail": "Both Day 7 reservations are booked: 11:45 AM–2:00 PM Kōloa Zipline, followed by the 5:00 PM luau.",
+        "status": "BOOKED",
+        "url": "https://www.koloazipline.com/"
+      },
+      "flex": "If the luau is unavailable, preserve the slow day and substitute a relaxed local dinner + sunset/family evening."
+    },
+    {
+      "id": 8,
+      "dateLabel": "Thu Oct 29",
+      "title": "Island time + Tidepools",
+      "theme": "Flexible final full day",
+      "status": "BOOKED",
+      "description": "Sleep in, beach/pool, revisit a favorite place, or let the family choose spontaneously. Evening anchor is a booked special family dinner at Tidepools.",
+      "activities": [
+        {
+          "time": "Morning → afternoon",
+          "title": "Choose-your-own island time",
+          "detail": "No required activity. Revisit a favorite place or stay at the resort."
+        },
+        {
+          "time": "7:00 PM",
+          "title": "Tidepools",
+          "detail": "Booked family dinner at the Grand Hyatt Kauai for 7:00 PM.",
+          "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
+        },
+        {
+          "time": "~6:02 PM",
+          "title": "Optional sunset",
+          "detail": "Līhuʻe sunset is approximately 6:02 PM on Oct 29; enjoy sunset beforehand if the family wants it, then head to the 7:00 PM dinner."
+        }
+      ],
+      "family": {
+        "Mom": "Leave the daytime relaxed and protect the 7:00 PM Tidepools dinner as the shared evening anchor.",
+        "Connie": "Keep the daytime loose and make the special dinner the final-full-day memory anchor.",
+        "Brandon": "Flexible daytime; Tidepools is the family reunion point."
+      },
+      "reservation": {
+        "name": "Tidepools at Grand Hyatt Kauai",
+        "detail": "OpenTable confirmation verifies a table for 3 on Thursday Oct 29 at 7:00 PM.",
+        "status": "BOOKED",
+        "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
+      },
+      "flex": "If the reservation changes, choose another special family dinner closer to headquarters and keep the day relaxed."
+    },
+    {
+      "id": 9,
+      "dateLabel": "Fri Oct 30",
+      "title": "Departure · pressure release",
+      "theme": "Slow goodbye",
+      "status": "FLEXIBLE",
+      "description": "Checkout at 11:00 AM, stay relatively close to Līhuʻe/airport, eat, take a final swim or nearby stop, return the rental car, and fly home.",
+      "activities": [
+        {
+          "time": "11:00 AM",
+          "title": "Checkout",
+          "detail": "Leave Waipouli and keep the remaining day geographically simple."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Final island time",
+          "detail": "Slow breakfast, final swim or nearby activity, lunch. No ambitious cross-island mission."
+        },
+        {
+          "time": "TBD",
+          "title": "Turo return",
+          "detail": "Exact car-return timing still needs confirmation."
+        },
+        {
+          "time": "10:59 PM",
+          "title": "Flight home",
+          "detail": "Build generous airport margin rather than squeezing in one last attraction."
+        }
+      ],
+      "family": {
+        "Mom": "No detailed planning needed yet; first confirm Turo return timing.",
+        "Connie": "Pressure-release day. The vacation does not need one final boss battle.",
+        "Brandon": "Keep the last day easy and flexible."
+      },
+      "flex": "A cancelled earlier activity can spill here only if it stays comfortably compatible with checkout, car return, and airport timing."
+    }
+  ],
+  "reservations": [
+    {
+      "day": 3,
+      "name": "Waterfall Swim & Hike — Da Life Outdoors",
+      "time": "Saturday Oct 24 · 11:00 AM",
+      "status": "BOOKED",
+      "action": "Saturday Oct 24 at 11:00 AM confirmed.",
+      "url": "https://www.dalifeoutdoors.com/waterfall-swim-and-hike/"
+    },
+    {
+      "day": 6,
+      "name": "Capt Andy’s Star Snorkel BBQ Sail",
+      "time": "7:15 AM",
+      "status": "BOOKED",
+      "action": "Charge alert confirms the Capt Andy’s Sailing reservation.",
+      "url": "https://www.napali.com/star/snorkel/"
+    },
+    {
+      "day": 7,
+      "name": "Kōloa Zipline — reduced 4-line tour",
+      "time": "11:45 AM–2:00 PM",
+      "status": "BOOKED",
+      "action": "Charge alert confirms the Kōloa Zipline reservation.",
+      "url": "https://www.koloazipline.com/"
+    },
+    {
+      "day": 7,
+      "name": "Smith Family Garden Luau",
+      "time": "5:00 PM",
+      "status": "BOOKED",
+      "action": "Smiths Kauai charge alert confirms the luau reservation.",
+      "url": "https://www.smithskauai.com/garden-luau/"
+    },
+    {
+      "day": 8,
+      "name": "Tidepools at Grand Hyatt Kauai",
+      "time": "7:00 PM",
+      "status": "BOOKED",
+      "action": "OpenTable confirmation verifies a table for 3 on Thursday Oct 29 at 7:00 PM.",
+      "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
+    }
+  ],
+  "watch": [
+    {
+      "title": "Kōkeʻe / west-side access",
+      "level": "HIGH WATCH",
+      "note": "Day 5 depends on current access and recovery conditions."
+    },
+    {
+      "title": "Ocean conditions",
+      "level": "WATCH",
+      "note": "Snorkeling and Nāpali boat plans depend on daily conditions."
+    },
+    {
+      "title": "October rain",
+      "level": "WATCH",
+      "note": "Weather can change quickly; keep outdoor plans flexible."
+    },
+    {
+      "title": "Trail hazards",
+      "level": "HIGH WATCH",
+      "note": "Do not improvise around closures or damaged infrastructure."
+    },
+    {
+      "title": "Day 7 timing",
+      "level": "WATCH",
+      "note": "Zipline ends at 2:00 PM and the luau begins at 5:00 PM. The family is intentionally using the gap to go straight into getting ready for the luau."
+    }
+  ],
+  "locations": [
+    {
+      "kind": "HOME",
+      "name": "Waipouli Beach Resort",
+      "note": "Trip headquarters",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Waipouli+Beach+Resort",
+      "lat": 22.06082,
+      "lon": -159.31983
+    },
+    {
+      "kind": "EAST",
+      "name": "Kapaʻa",
+      "note": "Local culture, food, wandering, coastline",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Kapa%27a+Kauai",
+      "lat": 22.07473,
+      "lon": -159.31916
+    },
+    {
+      "kind": "EAST",
+      "name": "Wailua Falls",
+      "note": "Scenic stop on Day 3",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Wailua+Falls+Kauai",
+      "lat": 22.03463,
+      "lon": -159.37858
+    },
+    {
+      "kind": "WEST",
+      "name": "Waimea Canyon",
+      "note": "Primary landscape destination; access dependent",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Waimea+Canyon+Kauai",
+      "lat": 22.07165,
+      "lon": -159.66171
+    },
+    {
+      "kind": "SOUTH",
+      "name": "Tidepools at Grand Hyatt Kauai",
+      "note": "Day 8 · 7:00 PM special family dinner",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Tidepools+Grand+Hyatt+Kauai",
+      "lat": 21.875346,
+      "lon": -159.438768
+    },
+    {
+      "kind": "SOUTH",
+      "name": "Kōloa Zipline",
+      "note": "Day 7 · 11:45 AM–2:00 PM zipline reservation",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Koloa+Zipline+Koloa+Kauai",
+      "lat": 21.899094,
+      "lon": -159.447941
+    },
+    {
+      "kind": "EAST",
+      "name": "Smith Family Garden Luau",
+      "note": "Day 7 · 5:00 PM luau in Wailua River Valley",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Smith%27s+Family+Garden+Luau+Kapaa+Kauai",
+      "lat": 22.046917,
+      "lon": -159.343545
+    },
+    {
+      "kind": "EAST",
+      "name": "Keālia Beach",
+      "note": "Day 2 · beach / coastline stop",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Kealia+Beach+Kauai",
+      "lat": 22.09526,
+      "lon": -159.30621
+    },
+    {
+      "kind": "EAST",
+      "name": "Lava Lava Beach Club",
+      "note": "Nearby unscheduled meals · walk-in only",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Lava+Lava+Beach+Club+Kapaa",
+      "lat": 22.051991,
+      "lon": -159.328966,
+      "url": "https://www.lavalavabeachclub.com/kauai/"
+    },
+    {
+      "kind": "SOUTHWEST",
+      "name": "Capt Andy’s · Port Allen",
+      "note": "Day 6 · Star Snorkel BBQ Sail check-in",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Port+Allen+Marina+Center+Eleele+Kauai",
+      "lat": 21.90148,
+      "lon": -159.58946
+    },
+    {
+      "kind": "SOUTHEAST",
+      "name": "Da Life Outdoors · Waterfall Property",
+      "note": "Day 3 · 11:00 AM check-in / private waterfall tour",
+      "maps": "https://www.google.com/maps/search/?api=1&query=21.954528,-159.385222",
+      "lat": 21.954528,
+      "lon": -159.385222
+    },
+    {
+      "kind": "SOUTHEAST",
+      "name": "Līhuʻe Airport",
+      "note": "Arrival / departure",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Lihue+Airport+Kauai",
+      "lat": 21.97226,
+      "lon": -159.34361
+    }
+  ],
+  "links": [
+    {
+      "name": "Geocaching.com",
+      "note": "Actual cache hunting for Day 5",
+      "url": "https://www.geocaching.com/"
+    },
+    {
+      "name": "Hawaiʻi DLNR — Kauaʻi parks",
+      "note": "Official park/access status",
+      "url": "https://dlnr.hawaii.gov/dsp/parks/kauai/"
+    },
+    {
+      "name": "NWS Honolulu",
+      "note": "Weather and official warnings",
+      "url": "https://www.weather.gov/hfo/"
+    },
+    {
+      "name": "Safeway",
+      "note": "Later grocery top-up",
+      "url": "https://www.safeway.com/"
+    },
+    {
+      "name": "Lava Lava Beach Club",
+      "note": "Nearby beachfront dining at Kauai Shores · walk-in only · useful for unscheduled meals",
+      "url": "https://www.lavalavabeachclub.com/kauai/"
+    }
+  ]
 }

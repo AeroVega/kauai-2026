@@ -66,6 +66,11 @@ test('untimed and alternative activities do not become scheduled next steps',()=
   assert.deepEqual(dayFlow({activities:[]},new Date()),{current:null,next:null,later:[]});
 });
 
+test('conditional days do not claim an activity is happening',()=>{
+  const conditional={status:'CONDITIONAL',activities:[{time:'11:00 AM',title:'Potential activity'}]};
+  assert.deepEqual(dayFlow(conditional,new Date(2026,9,26,12)),{current:null,next:null,later:[]});
+});
+
 test('unresolved operator choices and access checks do not claim an activity is happening',()=>{
   for(const day of [data.days[2],data.days[3],data.days[5]]){
     assert.deepEqual(dayFlow(day,new Date(2026,9,22,12)),{current:null,next:null,later:[]});
