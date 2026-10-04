@@ -40,6 +40,6 @@ export function more(data,build){
 
 export function bindOfflineUI(render){
   const toggle=document.getElementById("offlineToggle");
-  if(toggle)toggle.onclick=()=>{setForcedOffline(!isForcedOffline());render(true)};
+  if(toggle)toggle.onclick=()=>setForcedOffline(!isForcedOffline());
   return subscribeConnection(()=>render(false));
 }
