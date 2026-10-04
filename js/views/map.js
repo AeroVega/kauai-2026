@@ -12,7 +12,7 @@ export function map(data){
   }));
 
   const rows=markers.map(l=>{
-    const inner='<span class="day-main"><span class="day-title">'+s(l.name)+'</span><span class="day-sub">'+s(l.note)+'</span>'
+    const inner='<span class="map-row-number">'+l.number+'</span><span class="day-main"><span class="day-title">'+s(l.name)+'</span><span class="day-sub">'+s(l.note)+'</span>'
       +(l.kind?'<span class="row-tags"><span class="row-tag">'+s(l.kind)+'</span></span>':"")
       +'</span>'+(l.maps?externalIcon:'');
     return l.maps
@@ -31,7 +31,8 @@ export function map(data){
 export function initMap(){
   const el=document.getElementById("tripMap");
   const dataEl=document.getElementById("mapLocations");
-  if(!el||!dataEl||!window.L)return;
+  if(!el||!dataEl)return;
+  if(!window.L){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable</strong><span>The location list below is still available. Connect to the internet to load the map.</span></div>';return;}
   if(el.dataset.ready==="true")return;
   el.dataset.ready="true";
 
