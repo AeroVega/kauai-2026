@@ -1,6 +1,7 @@
 const STORAGE_KEY="kauai-offline-mode";
+const storage=typeof localStorage!=="undefined"?localStorage:null;
 
-let forced=localStorage.getItem(STORAGE_KEY)==="on";
+let forced=storage?.getItem(STORAGE_KEY)==="on";
 const listeners=new Set();
 
 export function isOfflineMode(){
@@ -11,7 +12,7 @@ export function isForcedOffline(){
 }
 export function setForcedOffline(value){
   forced=Boolean(value);
-  localStorage.setItem(STORAGE_KEY,forced?"on":"off");
+  storage?.setItem(STORAGE_KEY,forced?"on":"off");
   notify();
 }
 export function connectionLabel(){
