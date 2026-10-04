@@ -121,37 +121,6 @@
     },
     {
       "id": 4,
-      "dateLabel": "Sun Oct 25",
-      "title": "Waimea Canyon",
-      "theme": "Big scenery",
-      "status": "CONDITIONAL",
-      "description": "Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.",
-      "activities": [
-        {
-          "time": "Morning",
-          "title": "Head west",
-          "detail": "Make Waimea Canyon the dedicated landscape day."
-        },
-        {
-          "time": "Late morning",
-          "title": "Waimea Canyon viewpoints",
-          "detail": "Exact route and hiking stops deferred until access conditions are known."
-        },
-        {
-          "time": "Afternoon",
-          "title": "Kōkeʻe / west side",
-          "detail": "Conditional on current road and park access."
-        }
-      ],
-      "family": {
-        "Mom": "Review the primary concept before a detailed backup route is built.",
-        "Connie": "This is the big landscape day; prioritize scenery over checking boxes.",
-        "Brandon": "Join the scenic day or enjoy a lighter alternative if desired."
-      },
-      "flex": "West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."
-    },
-    {
-      "id": 5,
       "dateLabel": "Mon Oct 26",
       "title": "Connie’s dedicated geocaching day",
       "theme": "Different paths · same place",
@@ -181,6 +150,37 @@
         "Brandon": "No pre-planned alternative is necessary; freedom is intentional."
       },
       "flex": "If weather or access disrupts the cache plan, turn it into a flexible exploration/beach day rather than forcing the objective."
+    },
+    {
+      "id": 5,
+      "dateLabel": "Sun Oct 25",
+      "title": "Waimea Canyon",
+      "theme": "Big scenery",
+      "status": "CONDITIONAL",
+      "description": "Primary plan if access is restored: Waimea Canyon plus appropriate west-side viewpoints/trails. Keep the detailed route intentionally open until access is known.",
+      "activities": [
+        {
+          "time": "Morning",
+          "title": "Head west",
+          "detail": "Make Waimea Canyon the dedicated landscape day."
+        },
+        {
+          "time": "Late morning",
+          "title": "Waimea Canyon viewpoints",
+          "detail": "Exact route and hiking stops deferred until access conditions are known."
+        },
+        {
+          "time": "Afternoon",
+          "title": "Kōkeʻe / west side",
+          "detail": "Conditional on current road and park access."
+        }
+      ],
+      "family": {
+        "Mom": "Review the primary concept before a detailed backup route is built.",
+        "Connie": "This is the big landscape day; prioritize scenery over checking boxes.",
+        "Brandon": "Join the scenic day or enjoy a lighter alternative if desired."
+      },
+      "flex": "West/south scenic-drive backup if Kōkeʻe Road or relevant west-side access remains closed. Do not improvise around closures."
     },
     {
       "id": 6,
