@@ -15,7 +15,7 @@ export function map(data){
   const rows=markers.map(l=>{
     const inner='<span class="map-row-number">'+l.number+'</span><span class="day-main"><span class="day-title">'+s(l.name)+'</span><span class="day-sub">'+s(l.note)+'</span>'
       +(l.kind?'<span class="row-tags"><span class="row-tag">'+s(l.kind)+'</span></span>':"")
-      +'</span>'+(l.maps?externalIcon:'');
+      +'</span>'+(l.maps&&!isOfflineMode()?externalIcon:'');
     return l.maps&&!isOfflineMode()
       ?'<a class="day-row loc-row" aria-label="'+s('Directions to '+l.name)+'" href="'+s(l.maps)+'" target="_blank" rel="noopener">'+inner+'</a>'
       :'<div class="day-row loc-row">'+inner+(l.maps&&isOfflineMode()?'<span class="offline-lock">Offline</span>':"")+'</div>';
