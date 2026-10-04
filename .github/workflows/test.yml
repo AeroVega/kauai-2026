@@ -1,0 +1,20 @@
+name: Test Kauaʻi PWA
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Validate JavaScript
+        run: |
+          find js -name '*.js' -print0 | xargs -0 -n1 node --check
+          node --check service-worker.js
+      - name: Validate itinerary JSON
+        run: python -m json.tool itinerary.json > /dev/null
+      - name: Run regression tests
+        run: node --test tests/*.test.mjs
