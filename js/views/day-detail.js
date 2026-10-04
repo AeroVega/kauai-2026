@@ -45,7 +45,7 @@ export function openDay(data,id,onBack,backLabel){
 
   const app=document.getElementById("app");
   app.innerHTML='<section class="detail"><button class="back" id="back">← '+s(backLabel||"Plan")+'</button>'
-    +'<div class="detail-head"><div><p class="eyebrow">Day '+s(d.id)+' · '+s(d.dateLabel)+'</p><h1>'+s(d.title)+'</h1><p class="detail-lede">'+s(d.description)+'</p></div><span class="day-chip">'+s(d.status)+'</span></div>'
+    +'<div class="detail-head"><div><p class="eyebrow">Day '+s(d.id)+' · '+s(d.dateLabel)+' · Kauaʻi time</p><h1>'+s(d.title)+'</h1><p class="detail-lede">'+s(d.description)+'</p></div><span class="day-chip">'+s(d.status)+'</span></div>'
     +'<div class="card detail-section"><div class="activity-list">'+activities+'</div></div>'+paths+booking+nav+'</section>';
 
   document.getElementById("back").onclick=()=>{if(onBack)onBack()};
