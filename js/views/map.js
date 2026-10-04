@@ -33,6 +33,11 @@ export function initMap(){
   const dataEl=document.getElementById("mapLocations");
   if(!el||!dataEl)return;
   if(!window.L){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable</strong><span>The location list below is still available. Connect to the internet to load the map.</span></div>';return;}
+  // Give Leaflet a real box before initialization. This avoids iOS PWA viewport
+  // quirks causing the map container to collapse to zero height.
+  const mapHeight=Math.max(330,Math.min(620,Math.round((window.visualViewport?.height||window.innerHeight||700)*0.54)));
+  el.style.height=mapHeight+"px";
+  el.style.minHeight="330px";
   if(el.dataset.ready==="true")return;
   el.dataset.ready="true";
 
@@ -62,5 +67,5 @@ export function initMap(){
   });
 
   if(bounds.length)map.fitBounds(bounds,{padding:[28,28],maxZoom:10});
-  window.setTimeout(()=>map.invalidateSize(),0);
+  requestAnimationFrame(()=>map.invalidateSize());\n  window.setTimeout(()=>map.invalidateSize(),150);
 }
