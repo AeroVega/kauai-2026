@@ -273,10 +273,10 @@
     {
       "id": 8,
       "dateLabel": "Thu Oct 29",
-      "title": "Island time + family dinner",
+      "title": "Island time + Tidepools",
       "theme": "Flexible final full day",
       "status": "WORKING",
-      "description": "Sleep in, beach/pool, revisit a favorite place, or let the family choose spontaneously. Evening anchor is the planned nicer family dinner.",
+      "description": "Sleep in, beach/pool, revisit a favorite place, or let the family choose spontaneously. Evening anchor is a special family dinner at Tidepools.",
       "activities": [
         {
           "time": "Morning → afternoon",
@@ -285,9 +285,9 @@
         },
         {
           "time": "~5:00–5:30 PM",
-          "title": "The Beach House Restaurant",
-          "detail": "Planned nicer family dinner in Kōloa/Poʻipū. The point is a special shared meal near sunset.",
-          "url": "https://www.the-beach-house.com/book/"
+          "title": "Tidepools",
+          "detail": "Committed family dinner at the Grand Hyatt Kauai. Reservation target: 7:00 PM.",
+          "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
         },
         {
           "time": "~6:02 PM",
@@ -296,15 +296,15 @@
         }
       ],
       "family": {
-        "Mom": "Review whether The Beach House feels like the right final-night family dinner.",
-        "Connie": "Leave the daytime loose and protect the shared dinner as the memory anchor.",
-        "Brandon": "Flexible daytime; family dinner is the reunion point."
+        "Mom": "Leave the daytime relaxed and protect the 7:00 PM Tidepools dinner as the shared evening anchor.",
+        "Connie": "Keep the daytime loose and make the special dinner the final-full-day memory anchor.",
+        "Brandon": "Flexible daytime; Tidepools is the family reunion point."
       },
       "reservation": {
-        "name": "Dinner at The Beach House",
-        "detail": "Dinner 4:45–9:00 PM nightly; reservations recommended. Target an early sunset-adjacent time if available.",
+        "name": "Tidepools at Grand Hyatt Kauai",
+        "detail": "Family has committed to a 7:00 PM dinner on Oct 29. Confirm the reservation details before the trip.",
         "status": "OPEN",
-        "url": "https://www.the-beach-house.com/book/"
+        "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
       },
       "flex": "If dinner is unavailable, choose another special family dinner closer to headquarters and keep the day relaxed."
     },
@@ -380,11 +380,11 @@
     },
     {
       "day": 8,
-      "name": "The Beach House Restaurant",
-      "time": "~5:00–5:30 PM",
+      "name": "Tidepools at Grand Hyatt Kauai",
+      "time": "7:00 PM",
       "status": "OPEN",
-      "action": "Book sunset-adjacent dinner",
-      "url": "https://www.the-beach-house.com/book/"
+      "action": "Confirm the 7:00 PM family dinner reservation",
+      "url": "https://www.hyatt.com/grand-hyatt/en-US/kauai-grand-hyatt-kauai-resort-and-spa/dining"
     }
   ],
   "watch": [
@@ -441,9 +441,9 @@
     },
     {
       "kind": "SOUTH",
-      "name": "The Beach House Restaurant",
-      "note": "Planned nicer family dinner",
-      "maps": "https://www.google.com/maps/search/?api=1&query=The+Beach+House+Restaurant+Poipu+Kauai"
+      "name": "Tidepools at Grand Hyatt Kauai",
+      "note": "Day 8 · 7:00 PM special family dinner",
+      "maps": "https://www.google.com/maps/search/?api=1&query=Tidepools+Grand+Hyatt+Kauai"
     },
     {
       "kind": "SOUTH",
