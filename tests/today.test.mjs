@@ -60,13 +60,13 @@ test('untimed and alternative activities do not become scheduled next steps',()=
   const beforeArrival=dayFlow(data.days[0],new Date(2026,9,22,8));
   assert.equal(beforeArrival.current,null);
   assert.equal(beforeArrival.next,data.days[0].activities[0]);
-  const geocaching=dayFlow(data.days[4],new Date(2026,9,26,12));
+  const geocaching=dayFlow(data.days[3],new Date(2026,9,25,12));
   assert.equal(geocaching.current.title,'Geocaching expedition');
   assert.equal(geocaching.next.title,'Reunite');
   assert.deepEqual(dayFlow({activities:[]},new Date()),{current:null,next:null,later:[]});
 });
 
-test('unresolved operator choices do not claim an activity is happening',()=>{
-  // Day 3 and Day 6 are now booked; Day 4 remains intentionally flexible.
-  assert.deepEqual(dayFlow(data.days[3],new Date(2026,9,22,12)),{current:null,next:null,later:[]});
+test('conditional days do not claim an activity is happening',()=>{
+  const conditional={status:'CONDITIONAL',activities:[{time:'11:00 AM',title:'Potential activity'}]};
+  assert.deepEqual(dayFlow(conditional,new Date(2026,9,26,12)),{current:null,next:null,later:[]});
 });
