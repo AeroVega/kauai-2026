@@ -68,14 +68,17 @@ function refreshToday(){
 window.addEventListener("pageshow",refreshToday);
 document.addEventListener("visibilitychange",refreshToday);
 setInterval(refreshToday,60000);
-function showError(error){console.error(error);const a=document.getElementById("app");if(!a)return;const message=error?.message||String(error||"Unknown error"),stack=error?.stack||"No stack trace was provided by the browser.";a.innerHTML='<div class="empty startup-error" role="alert"><strong>The dashboard could not load.</strong><details><summary>Error details</summary><pre id="appDiagnostics"></pre></details><button class="action" id="reloadApp">Reload</button></div>';const pre=document.getElementById("appDiagnostics");if(pre)pre.textContent="Message: "+message+"
-
-Stack:
-"+stack+"
-
-Build: "+BUILD+"
-URL: "+location.href+"
-Time: "+new Date().toISOString();document.getElementById("reloadApp")?.addEventListener("click",()=>location.reload())}
+function showError(error){
+  console.error(error);
+  const a=document.getElementById("app");
+  if(!a)return;
+  const message=error?.message||String(error||"Unknown error");
+  const stack=error?.stack||"No stack trace was provided by the browser.";
+  a.innerHTML='<div class="empty startup-error" role="alert"><strong>The dashboard could not load.</strong><details><summary>Error details</summary><pre id="appDiagnostics"></pre></details><button class="action" id="reloadApp">Reload</button></div>';
+  const pre=document.getElementById("appDiagnostics");
+  if(pre)pre.textContent="Message: "+message+"\n\nStack:\n"+stack+"\n\nBuild: "+BUILD+"\nURL: "+location.href+"\nTime: "+new Date().toISOString();
+  document.getElementById("reloadApp")?.addEventListener("click",()=>location.reload());
+}
 async function boot(){
   try{DATA=await loadItinerary();render()}catch(error){showError(error);return}
   if("serviceWorker"in navigator){
