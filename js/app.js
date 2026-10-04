@@ -3,7 +3,8 @@ import {today} from "./views/today.js";
 import {plan} from "./views/plan.js";
 import {openDay} from "./views/day-detail.js";
 import {map,initMap} from "./views/map.js";
-import {more} from "./views/more.js";
+import {more,bindOfflineUI} from "./views/more.js";
+import {subscribeConnection} from "./offline.js";
 
 const BUILD="__BUILD_SHA__";
 const savedTheme=localStorage.getItem("kauai-theme");if(savedTheme==="dark")document.documentElement.dataset.theme="dark";
@@ -11,6 +12,7 @@ function syncThemeColor(){const m=document.getElementById("themeColor");if(m)m.c
 let DATA=null;
 const state={view:"today",day:null};
 let lastMarkup="";
+let unsubscribeOffline=null;
 
 function syncNavigation(){
   document.querySelectorAll(".nav-item").forEach(button=>{
@@ -22,17 +24,19 @@ function syncNavigation(){
 }
 function focusHeading(){
   const heading=document.querySelector("#app h1");
-  if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true})}
+  if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true)}
 }
 function scrollAppToTop(){window.scrollTo(0,0);document.querySelector(".layout")?.scrollTo(0,0)}
 function render(focus=false){
   state.day=null;
   syncThemeColor();
   syncNavigation();
+  if(unsubscribeOffline){unsubscribeOffline();unsubscribeOffline=null}
   lastMarkup=state.view==="today"?today(DATA):state.view==="plan"?plan(DATA):state.view==="map"?map(DATA):more(DATA,BUILD);
   document.getElementById("app").innerHTML=lastMarkup;
   if(state.view==="map")initMap();
   wire();
+  if(state.view==="more")unsubscribeOffline=bindOfflineUI(()=>render(false));
   if(focus){scrollAppToTop();focusHeading()}
 }
 function wire(){
@@ -55,7 +59,6 @@ function wire(){
 }
 function refreshToday(){
   if(!DATA||state.view!=="today"||state.day||document.hidden)return;
-  // Avoid replacing a focused control or redrawing an unchanged page every minute.
   if(document.getElementById("app").contains(document.activeElement)&&document.activeElement.matches("button,a,input,select,textarea"))return;
   if(today(DATA)!==lastMarkup)render();
 }
