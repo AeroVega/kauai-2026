@@ -1,8 +1,6 @@
 import {externalIcon,s} from "./today.js";
 import {isOfflineMode} from "../offline.js";
 
-const kindClass = kind => String(kind||"").toLowerCase().replace(/[^a-z0-9]+/g,"-");
-
 export function map(data){
   const locations=(data.locations||[]).filter(l=>Number.isFinite(Number(l.lat))&&Number.isFinite(Number(l.lon)));
   const markers=locations.map((l,i)=>({
@@ -29,12 +27,51 @@ export function map(data){
     +'<script type="application/json" id="mapLocations">'+markerData+'</script>';
 }
 
-export function initMap(){
-  const el=document.getElementById("tripMap");
+let leafletPromise=null;
+
+function loadLeaflet(){
+  if(window.L)return Promise.resolve(window.L);
+  if(leafletPromise)return leafletPromise;
+  const cssHref="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+  if(!document.querySelector('link[data-leaflet-css]')){
+    const link=document.createElement("link");
+    link.rel="stylesheet";
+    link.href=cssHref;
+    link.integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=";
+    link.crossOrigin="";
+    link.dataset.leafletCss="";
+    document.head.appendChild(link);
+  }
+  leafletPromise=new Promise((resolve,reject)=>{
+    const script=document.createElement("script");
+    script.src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    script.integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
+    script.crossOrigin="";
+    script.onload=()=>window.L?resolve(window.L):reject(new Error("Leaflet loaded without exposing its API"));
+    script.onerror=()=>reject(new Error("Leaflet could not be loaded"));
+    document.head.appendChild(script);
+  }).catch(error=>{leafletPromise=null;throw error});
+  return leafletPromise;
+}
+
+export async function initMap(){
+  let el=document.getElementById("tripMap");
   const dataEl=document.getElementById("mapLocations");
   if(!el||!dataEl)return;
   if(isOfflineMode()){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable offline</strong><span>The saved location list below is still available.</span></div>';return;}
-  if(!window.L){el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable</strong><span>The location list below is still available. Connect to the internet to load the map.</span></div>';return;}
+  try{
+    await loadLeaflet();
+  }catch(error){
+    el=document.getElementById("tripMap");
+    if(el)el.innerHTML='<div class="map-unavailable"><strong>Interactive map unavailable</strong><span>The location list below is still available. Connect to the internet to load the map.</span></div>';
+    console.warn("Map library unavailable",error);
+    return;
+  }
+  el=document.getElementById("tripMap");
+  const currentDataEl=document.getElementById("mapLocations");
+  if(!el||!currentDataEl||isOfflineMode())return;
+  if(!window.L)return;
+  }
   // Give Leaflet a real box before initialization. This avoids iOS PWA viewport
   // quirks causing the map container to collapse to zero height.
   const mapHeight=Math.max(330,Math.min(620,Math.round((window.visualViewport?.height||window.innerHeight||700)*0.54)));
