@@ -162,3 +162,14 @@ button{font-family:inherit;cursor:pointer}
 .map-unavailable{height:100%;min-height:360px;display:grid;place-content:center;gap:7px;padding:24px;text-align:center;color:var(--muted)}
 .map-unavailable strong{color:var(--ink);font-size:16px}
 .map-unavailable span{font-size:13px;line-height:1.45}
+
+/* Flight information */
+.section-heading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:4px}
+.section-heading-row h3{margin:0}
+.flight-row{display:grid;gap:8px;padding:15px 0;border-top:1px solid var(--line)}
+.flight-route{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.flight-route strong{font-size:17px}
+.flight-route span,.flight-times span,.flight-meta span{color:var(--muted);font-size:var(--type-meta)}
+.flight-times{display:flex;align-items:baseline;gap:7px}
+.flight-times strong{font-size:16px}
+.flight-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
