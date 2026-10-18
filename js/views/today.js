@@ -65,6 +65,7 @@ export function today(data){
     +'<span class="small">'+(pre?"":done?"Complete":"Day "+idx+" of "+total)+'</span></div>'
     +(pre?"":'<div class="progress"><span style="width:'+pct+'%"></span></div>')
     +'<p class="subtle side-base">'+s(data.trip&&data.trip.base)+'</p>'
+    +'<div class="stay-times"><span><strong>Check-in</strong> Oct 22 · 3 PM</span><span><strong>Check-out</strong> Oct 30 · 10 AM</span></div>'
     +(open.length?'<div class="side-open"><p class="eyebrow">Still open</p>'+open.slice(0,3).map(openRow).join("")
       +'<button class="text-link" data-view="more">View reservations</button>'+'</div>':"")
     +'</section>';

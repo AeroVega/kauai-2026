@@ -187,3 +187,8 @@ button{font-family:inherit;cursor:pointer}
 .connection-pill{display:inline-flex;align-items:center;min-height:28px;padding:4px 8px;border-radius:999px;background:var(--teal-soft);color:var(--teal);font-size:11px;font-weight:750;white-space:nowrap}
 .connection-pill.offline{background:var(--warn-bg);color:var(--warn-ink)}
 @media(max-width:520px){.connection-pill{font-size:10px;padding:3px 7px;flex-shrink:0}.brand{gap:7px;min-width:0;flex:1}.brand>span:first-of-type{max-width:none;min-width:0;white-space:nowrap}}
+
+
+/* Condo stay timing */
+.stay-times{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;line-height:1.45}
+.stay-times strong{color:var(--ink);font-weight:600;margin-right:4px}
